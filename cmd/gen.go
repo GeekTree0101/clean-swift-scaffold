@@ -17,8 +17,13 @@ var (
 				return
 			}
 
-			if len(path) == 0 {
-				fmt.Println("invalid filepath")
+			if len(sourcePath) == 0 {
+				fmt.Println("invalid source filepath")
+				return
+			}
+
+			if len(testPath) == 0 {
+				fmt.Println("invalid test filepath")
 				return
 			}
 
@@ -28,12 +33,14 @@ var (
 	}
 	name           string
 	usecasesString string
-	path           string
+	sourcePath     string
+	testPath       string
 )
 
 func init() {
-	genCmd.Flags().StringVarP(&name, "name", "n", "", "-n Detail or --name Detail")
-	genCmd.Flags().StringVarP(&usecasesString, "usecases", "u", "", "-u Reload,Next or --usecases Reload,Next")
-	genCmd.Flags().StringVarP(&path, "path", "p", "", "-p ./Projects or --path ./Projects")
+	genCmd.Flags().StringVarP(&name, "name", "n", "", "Usecase name, ex: -n Detail or --name Detail")
+	genCmd.Flags().StringVarP(&usecasesString, "usecases", "u", "", "Behavior names, ex: -u Reload,Next or --usecases Reload,Next")
+	genCmd.Flags().StringVarP(&sourcePath, "source", "s", "", "Source Dir, ex: -s ./Projects or --source ./Projects")
+	genCmd.Flags().StringVarP(&testPath, "test", "t", "", "Test Dir, ex: -t ./Projects or --test ./Projects")
 	rootCmd.AddCommand(genCmd)
 }
