@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/Geektree0101/clean-swift-scaffold/internal/gen"
 	"github.com/spf13/cobra"
 )
 
@@ -27,7 +28,17 @@ var (
 				return
 			}
 
-			// usecases := strings.Split(usecasesString, ",")
+			config := gen.GeneratorConfig{
+				Name:           name,
+				UsecasesString: usecasesString,
+				SourcePath:     sourcePath,
+				TestPath:       testPath,
+				ConfigFilePath: configFilePath,
+			}
+
+			gen := gen.NewGenerator(config)
+
+			gen.Run()
 
 		},
 	}

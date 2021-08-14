@@ -24,7 +24,7 @@ type Generator struct {
 	config     *model.Config
 }
 
-func NewGenerator(config GeneratorConfig) (*Generator, error) {
+func NewGenerator(config GeneratorConfig) *Generator {
 
 	return &Generator{
 		name:       config.Name,
@@ -32,7 +32,12 @@ func NewGenerator(config GeneratorConfig) (*Generator, error) {
 		sourcePath: config.SourcePath,
 		testPath:   config.TestPath,
 		config:     readConfig(config.ConfigFilePath),
-	}, nil
+	}
+}
+
+func (gen *Generator) Run() {
+
+	// TODO: RUN
 }
 
 func readConfig(path string) *model.Config {
