@@ -1,5 +1,5 @@
 //
-//  __USECASE__Interactor.swift
+//  __SCENE_NAME__Interactor.swift
 //  __ORGANIZATION__
 //
 //  Created by clean-swift-scaffold on __DATE__.
@@ -8,24 +8,24 @@
 
 import Foundation
 
-protocol __USECASE__BusinessLogic: AnyObject {
+protocol __SCENE_NAME__BusinessLogic: AnyObject {
 
   // clean-swift-scaffold-generate-business-interface (do-not-remove-comments)
 }
 
-protocol __USECASE__DataStore: AnyObject {
+protocol __SCENE_NAME__DataStore: AnyObject {
 
 }
 
-final class __USECASE__Interactor: __USECASE__DataStore {
+final class __SCENE_NAME__Interactor: __SCENE_NAME__DataStore {
 
-  var presenter: __USECASE__PresentationLogic?
+  var presenter: __SCENE_NAME__PresentationLogic?
 
 }
 
 
 // MARK: - Business Logic
-extension __USECASE__Interactor: __USECASE__BusinessLogic {
+extension __SCENE_NAME__Interactor: __SCENE_NAME__BusinessLogic {
 
   // clean-swift-scaffold-generate-business-implementation (do-not-remove-comments)
 }

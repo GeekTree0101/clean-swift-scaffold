@@ -1,5 +1,5 @@
 //
-//  __USECASE__PresenterTests.swift
+//  __SCENE_NAME__PresenterTests.swift
 //  __ORGANIZATION__Tests
 //
 //  Created by clean-swift-scaffold on __DATE__.
@@ -10,23 +10,23 @@ import XCTest
 
 @testable import __ORGANIZATION__
 
-final class __USECASE__PresenterTests: XCTestCase {
+final class __SCENE_NAME__PresenterTests: XCTestCase {
 
   // MARK: - Test Double Objects
 
-  final class __USECASE__DisplaySpy: __USECASE__DisplayLogic {
+  final class __SCENE_NAME__DisplaySpy: __SCENE_NAME__DisplayLogic {
     
     // clean-swift-scaffold-generate-display-spy (do-not-remove-comments)
   }
 
   // MARK: - Properties
 
-  var presenter: __USECASE__Presenter!
-  var display: __USECASE__DisplaySpy!
+  var presenter: __SCENE_NAME__Presenter!
+  var display: __SCENE_NAME__DisplaySpy!
 
   override func setUp() {
-    self.presenter = __USECASE__Presenter()
-    self.display = __USECASE__DisplaySpy()
+    self.presenter = __SCENE_NAME__Presenter()
+    self.display = __SCENE_NAME__DisplaySpy()
     self.presenter.view = self.display
   }
 }
@@ -34,7 +34,7 @@ final class __USECASE__PresenterTests: XCTestCase {
 
 // MARK: - TODO TestName (BDD)
 
-extension __USECASE__PresenterTests {
+extension __SCENE_NAME__PresenterTests {
 
   func test_doSomething() {
     // given

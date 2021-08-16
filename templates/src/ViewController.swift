@@ -1,5 +1,5 @@
 //
-//  __USECASE__ViewController.swift
+//  __SCENE_NAME__ViewController.swift
 //  __ORGANIZATION__
 //
 //  Created by clean-swift-scaffold on __DATE__.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol __USECASE__DisplayLogic: AnyObject {
+protocol __SCENE_NAME__DisplayLogic: AnyObject {
 
   // clean-swift-scaffold-generate-display-interface (do-not-remove-comments)
 }
 
-final class __USECASE__ViewController: UIVIewController {
+final class __SCENE_NAME__ViewController: UIVIewController {
 
   // MARK: - Properties
 
-  var router: (__USECASE__RoutingLogic & __USECASE__DataPassing)?
-  var interactor: __USECASE__BusinessLogic?
+  var router: (__SCENE_NAME__RoutingLogic & __SCENE_NAME__DataPassing)?
+  var interactor: __SCENE_NAME__BusinessLogic?
 
   // MARK: - Initializing
 
@@ -35,9 +35,9 @@ final class __USECASE__ViewController: UIVIewController {
 
   private func configure() {
     let viewController = self
-    let interactor = __USECASE__Interactor()
-    let presenter = __USECASE__Presenter()
-    let router = __USECASE__Router()
+    let interactor = __SCENE_NAME__Interactor()
+    let presenter = __SCENE_NAME__Presenter()
+    let router = __SCENE_NAME__Router()
 
     interactor.presenter = presenter
 
@@ -53,7 +53,7 @@ final class __USECASE__ViewController: UIVIewController {
 
 // MARK: - Display Logic
 
-extension __USECASE__ViewController: __USECASE__DisplayLogic {
+extension __SCENE_NAME__ViewController: __SCENE_NAME__DisplayLogic {
 
   // clean-swift-scaffold-generate-display-implementation (do-not-remove-comments)
 }

@@ -26,7 +26,7 @@ func NewHeaderConverter(
 	}
 }
 
-func (header *HeaderConverter) Render(source string, usecase string) string {
+func (header *HeaderConverter) Render(source string, sceneName string) string {
 
 	day := header.date.Day()
 	month := int(header.date.Month())
@@ -35,7 +35,7 @@ func (header *HeaderConverter) Render(source string, usecase string) string {
 	dateStr := fmt.Sprintf("%d/%d/%d", day, month, year)
 
 	var replacedSource string = source
-	replacedSource = strings.ReplaceAll(replacedSource, "__USECASE__", usecase)
+	replacedSource = strings.ReplaceAll(replacedSource, "__SCENE_NAME__", sceneName)
 	replacedSource = strings.ReplaceAll(replacedSource, "__ORGANIZATION__", header.org)
 	replacedSource = strings.ReplaceAll(replacedSource, "__DATE__", dateStr)
 	replacedSource = strings.ReplaceAll(replacedSource, "__YEAR__", strconv.Itoa(year))

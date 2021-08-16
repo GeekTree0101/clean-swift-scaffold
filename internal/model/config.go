@@ -2,7 +2,7 @@ package model
 
 // Header components
 //
-//  __USECASE__ViewControllerTests.swift
+//  __SCENE_NAME__ViewControllerTests.swift
 //  __ORGANIZATION__Tests
 //
 //  Created by clean-swift-scaffold on __DATE__.

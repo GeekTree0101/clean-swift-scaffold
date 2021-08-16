@@ -1,5 +1,5 @@
 //
-//  __USECASE__InteractorTests.swift
+//  __SCENE_NAME__InteractorTests.swift
 //  __ORGANIZATION__Tests
 //
 //  Created by clean-swift-scaffold on __DATE__.
@@ -10,27 +10,28 @@ import XCTest
 
 @testable import __ORGANIZATION__
 
-final class __USECASE__InteractorTests: XCTestCase {
+final class __SCENE_NAME__InteractorTests: XCTestCase {
 
-  final class __USECASE__PresenterSpy: __USECASE__PresentationLogic {
+  final class __SCENE_NAME__PresenterSpy: __SCENE_NAME__PresentationLogic {
 
+    // clean-swift-scaffold-generate-presenter-spy (do-not-remove-comments)
   }
 
   // MARK: - Properties
 
-  var presenter: __USECASE__PresenterSpy!
-  var interactor = __USECASE__Interactor!
+  var presenter: __SCENE_NAME__PresenterSpy!
+  var interactor = __SCENE_NAME__Interactor!
 
   override func setUp() {
-    self.presenter = __USECASE__PresenterSpy()
-    self.interactor = __USECASE__Interactor()
+    self.presenter = __SCENE_NAME__PresenterSpy()
+    self.interactor = __SCENE_NAME__Interactor()
     self.interactor.presenter = self.presenter
   }
 }
 
 // MARK: - TODO TestName (BDD)
 
-extension __USECASE__InteractorTests {
+extension __SCENE_NAME__InteractorTests {
 
   func test_doSomething() {
     // given

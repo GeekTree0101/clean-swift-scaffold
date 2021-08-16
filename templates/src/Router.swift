@@ -1,5 +1,5 @@
 //
-//  __USECASE__Router.swift
+//  __SCENE_NAME__Router.swift
 //  __ORGANIZATION__
 //
 //  Created by clean-swift-scaffold on __DATE__.
@@ -8,24 +8,24 @@
 
 import UIKit
 
-protocol __USECASE__RoutingLogic: AnyObject {
+protocol __SCENE_NAME__RoutingLogic: AnyObject {
 
 }
 
-protocol __USECASE__DataPassing: AnyObject {
+protocol __SCENE_NAME__DataPassing: AnyObject {
 
-  var dataStore: __USECASE__DataStore? { get set }
+  var dataStore: __SCENE_NAME__DataStore? { get set }
 }
 
-final class __USECASE__Router: __USECASE__DataPassing {
+final class __SCENE_NAME__Router: __SCENE_NAME__DataPassing {
 
-  weak var viewController: __USECASE__ViewController?
-  var dataStore: __USECASE__DataStore?
-  
+  weak var viewController: __SCENE_NAME__ViewController?
+  var dataStore: __SCENE_NAME__DataStore?
+
 }
 
 // MARK: - Routing Logic
 
-extension __USECASE__Router: __USECASE__RoutingLogic {
+extension __SCENE_NAME__Router: __SCENE_NAME__RoutingLogic {
 
 }

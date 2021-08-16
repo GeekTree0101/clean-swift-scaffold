@@ -1,5 +1,5 @@
 //
-//  __USECASE__Presenter.swift
+//  __SCENE_NAME__Presenter.swift
 //  __ORGANIZATION__
 //
 //  Created by clean-swift-scaffold on __DATE__.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-protocol __USECASE__PresentationLogic: AnyObject {
+protocol __SCENE_NAME__PresentationLogic: AnyObject {
 
   // clean-swift-scaffold-generate-presenter-interface (do-not-remove-comments)
 }
 
-final class __USECASE__Presenter {
+final class __SCENE_NAME__Presenter {
 
-  weak var viewController: __USECASE__DisplayLogic?
+  weak var viewController: __SCENE_NAME__DisplayLogic?
 
 }
 
 // MARK: - Presentation Logic
 
-extension __USECASE__Presenter: __USECASE__PresentationLogic {
+extension __SCENE_NAME__Presenter: __SCENE_NAME__PresentationLogic {
 
   // clean-swift-scaffold-generate-presenter-implementation (do-not-remove-comments)
 }
