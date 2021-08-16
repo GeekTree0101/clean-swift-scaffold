@@ -8,9 +8,9 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "clean-swift-autogen",
-	Short: "clean-swift-autogen is a spy auto generator",
-	Long:  "clean-swift-autogen is a spy auto generator",
+	Use:   "clean-swift-scaffold",
+	Short: "clean-swift-scaffold is a Clean-Swift source & test code auto generator",
+	Long:  "clean-swift-scaffold is a Clean-Swift source & test code auto generator",
 }
 
 func Execute() {
