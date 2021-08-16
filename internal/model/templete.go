@@ -2,9 +2,9 @@ package model
 
 const (
 	UsecaseTemplate string = `
-		enum __USECASE__ {
+	  enum __USECASE__ {
 
-			struct Reuest {
+			struct Request {
 
 			}
 
@@ -15,8 +15,8 @@ const (
 			struct ViewModel {
 
 			}
-		}
-	`
+
+		}`
 	// interactor
 	InteractorImplTemplate string = `
 	  func __METHOD_NAME__(request: __SCENE_NAME__.__USECASE__.Request) {
