@@ -24,3 +24,7 @@ func NewSourceConverter(
 		date:       date,
 	}
 }
+
+func (src *SourceConverter) Render() {
+
+}
