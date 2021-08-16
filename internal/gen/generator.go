@@ -3,7 +3,9 @@ package gen
 import (
 	"io/ioutil"
 	"strings"
+	"time"
 
+	"github.com/Geektree0101/clean-swift-scaffold/internal/converter"
 	"github.com/Geektree0101/clean-swift-scaffold/internal/model"
 	"gopkg.in/yaml.v2"
 )
@@ -36,8 +38,26 @@ func NewGenerator(config GeneratorConfig) *Generator {
 }
 
 func (gen *Generator) Run() {
+	today := time.Now()
 
-	// TODO: RUN
+	header := converter.NewHeaderConverter(
+		gen.config,
+		today,
+	)
+
+	source := converter.NewSourceConverter(
+		gen.name,
+		gen.usecases,
+		gen.sourcePath,
+		gen.testPath,
+		today,
+		header,
+	)
+
+	// TODO: RUN, sources, error & save to destinations :]
+	source.RenderAll()
+
+	// TODO: save to destination. you are so lucy :]
 }
 
 func readConfig(path string) *model.Config {
