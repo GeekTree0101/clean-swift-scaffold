@@ -15,7 +15,7 @@ final class __SCENE_NAME__PresenterTests: XCTestCase {
   // MARK: - Test Double Objects
 
   final class __SCENE_NAME__DisplaySpy: __SCENE_NAME__DisplayLogic {
-    
+
 // clean-swift-scaffold-generate-display-spy (do-not-remove-comments)
   }
 

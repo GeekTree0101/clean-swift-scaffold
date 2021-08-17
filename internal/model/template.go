@@ -50,6 +50,29 @@ func RenderDisplayImpl(sceneName string, usecase string, indentation int) string
 	return mutStr
 }
 
+func RenderDisplaySpy(sceneName string, usecase string, indentation int) string {
+
+	calledProperty := fmt.Sprintf(
+		"%svar display%sViewModel: %sModel.%s.ViewModel?",
+		whiteSpace(indentation*2),
+		usecase,
+		sceneName,
+		usecase,
+	)
+
+	calledApply := fmt.Sprintf(
+		"self.display%sViewModel = viewModel",
+		usecase,
+	)
+
+	mutStr := ""
+	mutStr += calledProperty
+	mutStr += "\n\n"
+	mutStr += RenderDisplayInterface(sceneName, usecase, indentation*2)
+	mutStr += openAndCloseWithContent(calledApply, indentation)
+	return mutStr
+}
+
 func RenderPresenterInterface(sceneName string, usecase string, indentation int) string {
 
 	return fmt.Sprintf(
@@ -101,6 +124,20 @@ func openAndClose(indentation int) string {
 	mutStr += " {"
 	mutStr += "\n\n"
 	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
+	return mutStr
+}
+
+func openAndCloseWithContent(content string, indentation int) string {
+	/**
+		example
+		{
+	    <content>
+		}
+		**/
+	mutStr := ""
+	mutStr += " {"
+	mutStr += fmt.Sprintf("\n%s%s\n", whiteSpace(indentation*3), content)
+	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation*2))
 	return mutStr
 }
 
