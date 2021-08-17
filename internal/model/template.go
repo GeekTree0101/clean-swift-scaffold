@@ -32,7 +32,7 @@ func RenderUsecaseTemplate(usecase string, indentation int) string {
 func RenderDisplayInterface(sceneName string, usecase string, indentation int) string {
 
 	return fmt.Sprintf(
-		"%sfunc display%s(viewModel: %s.%s.ViewModel)",
+		"%sfunc display%s(viewModel: %sModel.%s.ViewModel)",
 		whiteSpace(indentation),
 		usecase,
 		sceneName,
@@ -46,7 +46,7 @@ func RenderDisplayImpl(sceneName string, usecase string, indentation int) string
 
 	// Open
 	mutStr += fmt.Sprintf(
-		"%sfunc display%s(viewModel: %s.%s.ViewModel) {\n\n",
+		"%sfunc display%s(viewModel: %sModel.%s.ViewModel) {\n\n",
 		whiteSpace(indentation),
 		usecase,
 		sceneName,
@@ -54,7 +54,7 @@ func RenderDisplayImpl(sceneName string, usecase string, indentation int) string
 	)
 
 	// Close
-	mutStr += fmt.Sprintf("%s}\n\n", whiteSpace(indentation))
+	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
 
 	return mutStr
 }

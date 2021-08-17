@@ -156,3 +156,38 @@ func TestModel(t *testing.T) {
 	})
 
 }
+
+// MARK: - ViewController
+
+func TestViewController(t *testing.T) {
+
+	templateData, err := ioutil.ReadFile("../../templates/src/ViewController.swift")
+	expectedData, err := ioutil.ReadFile("../../test/ArticleDetailViewController.swift")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	dummySrc := string(templateData)
+	expectedSrc := string(expectedData)
+
+	expectedDestPath := "./Playground/Sources/ArticleDetailViewController.swift"
+
+	t.Run("render view controller", func(t *testing.T) {
+		// given
+		sut := createSource()
+
+		// when
+		out := sut.RenderViewController(dummySrc)
+
+		// then
+		if out.DestPath != expectedDestPath {
+			t.Errorf("invalid destination path\nexpect:\n%s\noutput:\n%s\n", expectedDestPath, out.DestPath)
+		}
+
+		if out.SourceCode != expectedSrc {
+			t.Errorf("Failed to render\n expected:\n%s\noutput:\n%s\n", expectedSrc, out.SourceCode)
+		}
+	})
+
+}

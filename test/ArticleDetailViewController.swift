@@ -8,7 +8,8 @@
 
 import UIKit
 
-protocol ArticleDetailDisplayLogic: AnyObject {  
+protocol ArticleDetailDisplayLogic: AnyObject {
+
   func displayReload(viewModel: ArticleDetailModel.Reload.ViewModel)
   func displayNext(viewModel: ArticleDetailModel.Next.ViewModel)
 }

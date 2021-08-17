@@ -54,5 +54,6 @@ final class __SCENE_NAME__ViewController: UIVIewController {
 // MARK: - Display Logic
 
 extension __SCENE_NAME__ViewController: __SCENE_NAME__DisplayLogic {
+
 // clean-swift-scaffold-generate-display-implementation (do-not-remove-comments)
 }
