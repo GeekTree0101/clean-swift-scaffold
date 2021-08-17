@@ -29,6 +29,36 @@ func RenderUsecaseTemplate(usecase string, indentation int) string {
 	return mutStr
 }
 
+func RenderDisplayInterface(sceneName string, usecase string, indentation int) string {
+
+	return fmt.Sprintf(
+		"%sfunc display%s(viewModel: %s.%s.ViewModel)",
+		whiteSpace(indentation),
+		usecase,
+		sceneName,
+		usecase,
+	)
+}
+
+func RenderDisplayImpl(sceneName string, usecase string, indentation int) string {
+
+	mutStr := ""
+
+	// Open
+	mutStr += fmt.Sprintf(
+		"%sfunc display%s(viewModel: %s.%s.ViewModel) {\n\n",
+		whiteSpace(indentation),
+		usecase,
+		sceneName,
+		usecase,
+	)
+
+	// Close
+	mutStr += fmt.Sprintf("%s}\n\n", whiteSpace(indentation))
+
+	return mutStr
+}
+
 func whiteSpace(i int) string {
 	whitespaces := make([]string, i)
 	for i := range whitespaces {
@@ -53,11 +83,4 @@ const (
 		}
 	`
 	PresenterInterpaceTemplate string = `func present__USECASE__(response: __SCENE_NAME__.__USECASE__.Response)`
-	// display
-	displayImplTemplate string = `
-	  func display__USECASE__(viewModel: __SCENE_NAME__.__USECASE__.ViewModel) {
-
-		}
-	`
-	displayInterpaceTemplate string = `func display__USECASE__(viewModel: __SCENE_NAME__.__USECASE__.ViewModel)`
 )
