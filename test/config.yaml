@@ -1,6 +1,6 @@
 organization: Miro
 copyright: Geektree0101
-template_path: ./some/template
-source_path: ./some/Projects/Sources/Scene
-test_path: ./some/Projects/Tests/Scene
+template_path: ../../templates
+source_path: ../../Playground/Sources
+test_path: ../../Playground/Tests
 intentation: 4

@@ -8,7 +8,7 @@ import (
 
 func TestReadConfig(t *testing.T) {
 
-	// givne
+	// given
 	flag := gen.Genflag{
 		Name:           "ArticleDetail",
 		UsecasesString: "Reload,Next",
@@ -36,17 +36,17 @@ func TestReadConfig(t *testing.T) {
 		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "Miro", config.Org)
 	}
 
-	if config.TemplatePath != "./some/template" {
-		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "./some/template", config.TemplatePath)
+	if config.TemplatePath != "../../templates" {
+		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../templates", config.TemplatePath)
 	}
 
-	if config.SourcePath != "./some/Projects/Sources/Scene" {
-		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "./some/Projects/Sources/Scene", config.SourcePath)
+	if config.SourcePath != "../../Playground/Sources" {
+		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../Playground/Sources", config.SourcePath)
 
 	}
 
-	if config.TestPath != "./some/Projects/Tests/Scene" {
-		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "./some/Projects/Tests/Scene", config.TestPath)
+	if config.TestPath != "../../Playground/Tests" {
+		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../Playground/Tests", config.TestPath)
 	}
 
 	if config.Intentation != 4 {
