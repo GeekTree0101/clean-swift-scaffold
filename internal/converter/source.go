@@ -34,6 +34,14 @@ func NewSourceConverter(
 	}
 }
 
+func (c *SourceConverter) Description() string {
+	mutDesc := ""
+	mutDesc += fmt.Sprintf("name: %s\n", c.sceneName)
+	mutDesc += fmt.Sprintf("usecases: %s\n", c.usecases)
+	mutDesc += fmt.Sprintf("created at: %s\n", c.date)
+	return mutDesc
+}
+
 func (c *SourceConverter) RenderAll() ([]model.Source, error) {
 	interactorByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Interactor.swift", c.config.TemplatePath))
 
