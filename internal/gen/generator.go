@@ -2,6 +2,7 @@ package gen
 
 import (
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"strings"
 	"time"
@@ -61,7 +62,7 @@ func (gen *Generator) Run() error {
 
 func (gen *Generator) ReadConfig() (*model.Config, error) {
 
-	content, err := ioutil.ReadFile(gen.flag.ConfigFilePath)
+	content, err := ioutil.ReadFile(fmt.Sprintf("%s/config.yaml", gen.flag.ConfigFilePath))
 
 	if err != nil {
 		return nil, err
