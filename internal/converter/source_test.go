@@ -38,69 +38,15 @@ func createSource() *converter.SourceConverter {
 
 func TestRenderRouter(t *testing.T) {
 
-	dummySrc := `//
-	//  __SCENE_NAME__Router.swift
-	//  __ORGANIZATION__
-	//
-	//  Created by clean-swift-scaffold on __DATE__.
-	//  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.
-	//
-	
-	import UIKit
-	
-	protocol __SCENE_NAME__RoutingLogic: AnyObject {
-	
-	}
-	
-	protocol __SCENE_NAME__DataPassing: AnyObject {
-	
-		var dataStore: __SCENE_NAME__DataStore? { get set }
-	}
-	
-	final class __SCENE_NAME__Router: __SCENE_NAME__DataPassing {
-	
-		weak var viewController: __SCENE_NAME__ViewController?
-		var dataStore: __SCENE_NAME__DataStore?
-	
-	}
-	
-	// MARK: - Routing Logic
-	
-	extension __SCENE_NAME__Router: __SCENE_NAME__RoutingLogic {
-	
-	}`
+	templateData, err := ioutil.ReadFile("../../templates/src/Router.swift")
+	expectedData, err := ioutil.ReadFile("../../test/ArticleDetailRouter.swift")
 
-	expectedSrc := `//
-	//  ArticleDetailRouter.swift
-	//  miro.inc
-	//
-	//  Created by clean-swift-scaffold on 12/10/2020.
-	//  Copyright © 2020 Geektree0101. All rights reserved.
-	//
-	
-	import UIKit
-	
-	protocol ArticleDetailRoutingLogic: AnyObject {
-	
+	if err != nil {
+		panic(err.Error())
 	}
-	
-	protocol ArticleDetailDataPassing: AnyObject {
-	
-		var dataStore: ArticleDetailDataStore? { get set }
-	}
-	
-	final class ArticleDetailRouter: ArticleDetailDataPassing {
-	
-		weak var viewController: ArticleDetailViewController?
-		var dataStore: ArticleDetailDataStore?
-	
-	}
-	
-	// MARK: - Routing Logic
-	
-	extension ArticleDetailRouter: ArticleDetailRoutingLogic {
-	
-	}`
+
+	dummySrc := string(templateData)
+	expectedSrc := string(expectedData)
 
 	expectedDestPath := "./Playground/Sources/ArticleDetailRouter.swift"
 
