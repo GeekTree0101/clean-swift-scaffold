@@ -266,3 +266,38 @@ func TestPresenterTests(t *testing.T) {
 	})
 
 }
+
+// MARK: - InteractorTests
+
+func TestInteractorTests(t *testing.T) {
+
+	templateData, err := ioutil.ReadFile("../../templates/test/Interactor.swift")
+	expectedData, err := ioutil.ReadFile("../../test/ArticleDetailInteractorTests.swift")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	dummySrc := string(templateData)
+	expectedSrc := string(expectedData)
+
+	expectedDestPath := "./Playground/Sources/ArticleDetailInteractorTests.swift"
+
+	t.Run("render interactor tests", func(t *testing.T) {
+		// given
+		sut := createSource()
+
+		// when
+		out := sut.RenderInteractorTests(dummySrc)
+
+		// then
+		if out.DestPath != expectedDestPath {
+			t.Errorf("invalid destination path\nexpect:\n%s\noutput:\n%s\n", expectedDestPath, out.DestPath)
+		}
+
+		if out.SourceCode != expectedSrc {
+			t.Errorf("Failed to render\n expected:\n%s\noutput:\n%s\n", expectedSrc, out.SourceCode)
+		}
+	})
+
+}

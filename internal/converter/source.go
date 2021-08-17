@@ -160,6 +160,29 @@ func (c *SourceConverter) RenderPresenterTests(src string) *model.Source {
 	}
 }
 
+
+func (c *SourceConverter) RenderInteractorTests(src string) *model.Source {
+
+	var mutSrc string = src
+	mutSrc = strings.ReplaceAll(mutSrc, "__SCENE_NAME__", c.sceneName)
+
+	implementCompositionToken := "// clean-swift-scaffold-generate-presenter-spy (do-not-remove-comments)"
+
+	imples := []string{}
+
+	for _, uc := range c.usecases {
+		imples = append(imples, model.RenderPresenterSpy(c.sceneName, uc, c.config.Intentation))
+	}
+
+	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
+	mutSrc = c.header.Render(mutSrc, c.sceneName)
+
+	return &model.Source{
+		DestPath:   fmt.Sprintf("%s/%sInteractorTests.swift", c.config.SourcePath, c.sceneName),
+		SourceCode: mutSrc,
+	}
+}
+
 func (c *SourceConverter) RenderViewController(src string) *model.Source {
 
 	var mutSrc string = src
