@@ -14,4 +14,6 @@ type Config struct {
 	Copyright    string `yaml:"copyright"`
 	TemplatePath string `yaml:"template_path"`
 	Intentation  int    `yaml:"intentation"`
+	SourcePath   string `yaml:"source_path"`
+	TestPath     string `yaml:"test_path"`
 }

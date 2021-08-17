@@ -1,4 +1,6 @@
-organization: "miro.inc"
-copyright: "Geektree0101"
-template_path: "./some/template"
+organization: miro.inc
+copyright: Geektree0101
+template_path: ./some/template
+source_path: ./some/Projects/Sources/Scene
+test_path: ./some/Projects/Tests/Scene
 intentation: 4
