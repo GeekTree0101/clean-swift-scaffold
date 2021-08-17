@@ -13,25 +13,26 @@ func createSource() *converter.SourceConverter {
 
 	date := time.Date(2020, 10, 12, 0, 0, 0, 0, time.UTC)
 
+	config := &model.Config{
+		Org:          "miro.inc",
+		Copyright:    "Geektree0101",
+		TemplatePath: "../../templates",
+		SourcePath:   "./Playground/Sources",
+		TestPath:     "./Playground/Tests",
+		Intentation:  2,
+	}
+
 	header := converter.NewHeaderConverter(
-		&model.Config{
-			Org:          "miro.inc",
-			Copyright:    "Geektree0101",
-			TemplatePath: "",
-			Intentation:  2,
-		},
+		config,
 		date,
 	)
 
 	return converter.NewSourceConverter(
 		"ArticleDetail",
 		[]string{"Reload", "Next"},
-		"./Playground/Sources",
-		"./Playground/Tests",
-		"../../templates",
-		date,
-		2,
 		header,
+		config,
+		date,
 	)
 }
 

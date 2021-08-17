@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"errors"
 	"io/ioutil"
 	"strings"
 	"time"
@@ -10,7 +11,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-type GeneratorConfig struct {
+type Genflag struct {
 	Name           string
 	UsecasesString string
 	SourcePath     string
@@ -19,59 +20,51 @@ type GeneratorConfig struct {
 }
 
 type Generator struct {
-	name       string
-	usecases   []string
-	sourcePath string
-	testPath   string
-	config     *model.Config
+	flag Genflag
 }
 
-func NewGenerator(config GeneratorConfig) *Generator {
+func NewGenerator(flag Genflag) *Generator {
 
 	return &Generator{
-		name:       config.Name,
-		usecases:   strings.Split(config.UsecasesString, ","),
-		sourcePath: config.SourcePath,
-		testPath:   config.TestPath,
-		config:     readConfig(config.ConfigFilePath),
+		flag: flag,
 	}
 }
 
-func (gen *Generator) Run() {
+func (gen *Generator) Run() error {
+
+	config, err := gen.ReadConfig()
+
+	if err != nil {
+		return err
+	}
+
 	today := time.Now()
 
-	header := converter.NewHeaderConverter(
-		gen.config,
-		today,
-	)
-
 	source := converter.NewSourceConverter(
-		gen.name,
-		gen.usecases,
-		gen.sourcePath,
-		gen.testPath,
-		gen.config.TemplatePath,
+		gen.flag.Name,
+		strings.Split(gen.flag.UsecasesString, ","),
+		converter.NewHeaderConverter(
+			config,
+			today,
+		),
+		config,
 		today,
-		gen.config.Intentation,
-		header,
 	)
 
 	// TODO: RUN, sources, error & save to destinations :]
 	source.RenderAll()
 
 	// TODO: save to destination. you are so lucy :]
+
+	return nil
 }
 
-func readConfig(path string) *model.Config {
+func (gen *Generator) ReadConfig() (*model.Config, error) {
 
-	content, err := ioutil.ReadFile(path)
+	content, err := ioutil.ReadFile(gen.flag.ConfigFilePath)
 
 	if err != nil {
-		return &model.Config{
-			Org:          "Unknown",
-			Copyright:    "Geektree0101",
-			TemplatePath: "./templates",
-		}
+		return nil, err
 	}
 
 	config := &model.Config{}
@@ -79,12 +72,26 @@ func readConfig(path string) *model.Config {
 	err = yaml.Unmarshal(content, &config)
 
 	if err != nil {
-		return &model.Config{
-			Org:          "Unknown",
-			Copyright:    "Geektree0101",
-			TemplatePath: "./templates",
-		}
+		return nil, err
 	}
 
-	return config
+	if len(config.SourcePath) == 0 {
+
+		if len(gen.flag.SourcePath) == 0 {
+			return nil, errors.New("invalid source path")
+		}
+
+		config.SourcePath = gen.flag.SourcePath
+	}
+
+	if len(config.TestPath) == 0 {
+
+		if len(gen.flag.TestPath) == 0 {
+			return nil, errors.New("invalid test path")
+		}
+
+		config.TestPath = gen.flag.TestPath
+	}
+
+	return config, nil
 }

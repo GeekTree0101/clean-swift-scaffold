@@ -10,64 +10,56 @@ import (
 )
 
 type SourceConverter struct {
-	sceneName    string
-	usecases     []string
-	sourcePath   string
-	testPath     string
-	templatePath string
-	date         time.Time
-	indentation  int
-	header       *HeaderConverter
+	sceneName string
+	usecases  []string
+	header    *HeaderConverter
+	config    *model.Config
+	date      time.Time
 }
 
 func NewSourceConverter(
 	sceneName string,
 	usecases []string,
-	sourcePath string,
-	testPath string,
-	templatePath string,
+	header *HeaderConverter,
+	config *model.Config,
 	date time.Time,
-	indentation int,
-	header *HeaderConverter) *SourceConverter {
+) *SourceConverter {
 
 	return &SourceConverter{
-		sceneName:    sceneName,
-		usecases:     usecases,
-		sourcePath:   sourcePath,
-		testPath:     testPath,
-		templatePath: templatePath,
-		date:         date,
-		indentation:  indentation,
-		header:       header,
+		sceneName: sceneName,
+		usecases:  usecases,
+		header:    header,
+		config:    config,
+		date:      date,
 	}
 }
 
 func (c *SourceConverter) RenderAll() ([]model.Source, error) {
-	interactorByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Interactor.swift", c.templatePath))
+	interactorByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Interactor.swift", c.config.TemplatePath))
 
 	if err != nil {
 		return nil, err
 	}
 
-	presenterByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Presenter.swift", c.templatePath))
+	presenterByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Presenter.swift", c.config.TemplatePath))
 
 	if err != nil {
 		return nil, err
 	}
 
-	displayByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/ViewController.swift", c.templatePath))
+	displayByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/ViewController.swift", c.config.TemplatePath))
 
 	if err != nil {
 		return nil, err
 	}
 
-	routerByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Router.swift", c.templatePath))
+	routerByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Router.swift", c.config.TemplatePath))
 
 	if err != nil {
 		return nil, err
 	}
 
-	modelByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Model.swift", c.templatePath))
+	modelByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Model.swift", c.config.TemplatePath))
 
 	if err != nil {
 		return nil, err
@@ -95,7 +87,7 @@ func (c *SourceConverter) RenderInteractor(src string) *model.Source {
 	ifs := []string{}
 
 	for _, uc := range c.usecases {
-		ifs = append(ifs, model.RenderInteractorInterface(c.sceneName, uc, c.indentation))
+		ifs = append(ifs, model.RenderInteractorInterface(c.sceneName, uc, c.config.Intentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, interfaceCompositionToken, strings.Join(ifs, "\n"))
@@ -103,14 +95,14 @@ func (c *SourceConverter) RenderInteractor(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderInteractorImpl(c.sceneName, uc, c.indentation))
+		imples = append(imples, model.RenderInteractorImpl(c.sceneName, uc, c.config.Intentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sInteractor.swift", c.sourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sInteractor.swift", c.config.SourcePath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }
@@ -126,7 +118,7 @@ func (c *SourceConverter) RenderPresenter(src string) *model.Source {
 	ifs := []string{}
 
 	for _, uc := range c.usecases {
-		ifs = append(ifs, model.RenderPresenterInterface(c.sceneName, uc, c.indentation))
+		ifs = append(ifs, model.RenderPresenterInterface(c.sceneName, uc, c.config.Intentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, interfaceCompositionToken, strings.Join(ifs, "\n"))
@@ -134,14 +126,14 @@ func (c *SourceConverter) RenderPresenter(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderPresenterImpl(c.sceneName, uc, c.indentation))
+		imples = append(imples, model.RenderPresenterImpl(c.sceneName, uc, c.config.Intentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sPresenter.swift", c.sourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sPresenter.swift", c.config.SourcePath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }
@@ -157,7 +149,7 @@ func (c *SourceConverter) RenderViewController(src string) *model.Source {
 	ifs := []string{}
 
 	for _, uc := range c.usecases {
-		ifs = append(ifs, model.RenderDisplayInterface(c.sceneName, uc, c.indentation))
+		ifs = append(ifs, model.RenderDisplayInterface(c.sceneName, uc, c.config.Intentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, interfaceCompositionToken, strings.Join(ifs, "\n"))
@@ -165,14 +157,14 @@ func (c *SourceConverter) RenderViewController(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderDisplayImpl(c.sceneName, uc, c.indentation))
+		imples = append(imples, model.RenderDisplayImpl(c.sceneName, uc, c.config.Intentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sViewController.swift", c.sourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sViewController.swift", c.config.SourcePath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }
@@ -186,14 +178,14 @@ func (c *SourceConverter) RenderModel(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderUsecaseTemplate(uc, c.indentation))
+		imples = append(imples, model.RenderUsecaseTemplate(uc, c.config.Intentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, compositionToken, strings.Join(imples, "\n\n"))
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sModel.swift", c.sourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sModel.swift", c.config.SourcePath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }
@@ -205,7 +197,7 @@ func (c *SourceConverter) RenderRouter(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sRouter.swift", c.sourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sRouter.swift", c.config.SourcePath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }

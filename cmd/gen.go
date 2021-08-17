@@ -18,15 +18,15 @@ var (
 				return
 			}
 
-			config := gen.GeneratorConfig{
-				Name:           name,
-				UsecasesString: usecasesString,
-				SourcePath:     sourcePath,
-				TestPath:       testPath,
-				ConfigFilePath: configFilePath,
-			}
-
-			gen := gen.NewGenerator(config)
+			gen := gen.NewGenerator(
+				gen.Genflag{
+					Name:           name,
+					UsecasesString: usecasesString,
+					SourcePath:     sourcePath,
+					TestPath:       testPath,
+					ConfigFilePath: configFilePath,
+				},
+			)
 
 			gen.Run()
 
