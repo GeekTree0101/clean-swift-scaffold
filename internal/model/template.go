@@ -44,18 +44,8 @@ func RenderDisplayInterface(sceneName string, usecase string, indentation int) s
 func RenderDisplayImpl(sceneName string, usecase string, indentation int) string {
 
 	mutStr := ""
-
-	// Open
-	mutStr += fmt.Sprintf(
-		"%sfunc display%s(viewModel: %sModel.%s.ViewModel) {\n\n",
-		whiteSpace(indentation),
-		usecase,
-		sceneName,
-		usecase,
-	)
-
-	// Close
-	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
+	mutStr += RenderDisplayInterface(sceneName, usecase, indentation)
+	mutStr += openAndClose(indentation)
 
 	return mutStr
 }
@@ -74,18 +64,8 @@ func RenderPresenterInterface(sceneName string, usecase string, indentation int)
 func RenderPresenterImpl(sceneName string, usecase string, indentation int) string {
 
 	mutStr := ""
-
-	// Open
-	mutStr += fmt.Sprintf(
-		"%sfunc present%s(response: %sModel.%s.Response) {\n\n",
-		whiteSpace(indentation),
-		usecase,
-		sceneName,
-		usecase,
-	)
-
-	// Close
-	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
+	mutStr += RenderPresenterInterface(sceneName, usecase, indentation)
+	mutStr += openAndClose(indentation)
 
 	return mutStr
 }
@@ -104,23 +84,31 @@ func RenderInteractorInterface(sceneName string, usecase string, indentation int
 func RenderInteractorImpl(sceneName string, usecase string, indentation int) string {
 
 	mutStr := ""
-
-	// Open
-	mutStr += fmt.Sprintf(
-		"%sfunc %s(request: %sModel.%s.Request) {\n\n",
-		whiteSpace(indentation),
-		lowerFirstChar(usecase),
-		sceneName,
-		usecase,
-	)
-
-	// Close
-	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
+	mutStr += RenderInteractorInterface(sceneName, usecase, indentation)
+	mutStr += openAndClose(indentation)
 
 	return mutStr
 }
 
+func openAndClose(indentation int) string {
+	/**
+	example
+	{
+
+	}
+	**/
+	mutStr := ""
+	mutStr += " {"
+	mutStr += "\n\n"
+	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
+	return mutStr
+}
+
 func lowerFirstChar(str string) string {
+	/**
+	example
+	ReloadData -> reloadData
+	**/
 	for i, v := range str {
 		return string(unicode.ToLower(v)) + str[i+1:]
 	}
@@ -134,14 +122,3 @@ func whiteSpace(i int) string {
 	}
 	return strings.Join(whitespaces, "")
 }
-
-const (
-
-	// interactor
-	InteractorImplTemplate string = `
-	  func __METHOD_NAME__(request: __SCENE_NAME__.__USECASE__.Request) {
-
-		}
-	`
-	InteractorInterpaceTemplate string = `func __METHOD_NAME__(request: __SCENE_NAME__.__USECASE__.Request)`
-)
