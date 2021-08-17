@@ -46,7 +46,33 @@ func (c *SourceConverter) RenderAll() ([]model.Source, error) {
 
 func (c *SourceConverter) RenderInteractor(src string) *model.Source {
 
-	return nil
+	var mutSrc string = src
+	mutSrc = strings.ReplaceAll(mutSrc, "__SCENE_NAME__", c.sceneName)
+
+	interfaceCompositionToken := "// clean-swift-scaffold-generate-business-interface (do-not-remove-comments)"
+	implementCompositionToken := "// clean-swift-scaffold-generate-business-implementation (do-not-remove-comments)"
+
+	ifs := []string{}
+
+	for _, uc := range c.usecases {
+		ifs = append(ifs, model.RenderInteractorInterface(c.sceneName, uc, c.indentation))
+	}
+
+	mutSrc = strings.ReplaceAll(mutSrc, interfaceCompositionToken, strings.Join(ifs, "\n"))
+
+	imples := []string{}
+
+	for _, uc := range c.usecases {
+		imples = append(imples, model.RenderInteractorImpl(c.sceneName, uc, c.indentation))
+	}
+
+	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
+	mutSrc = c.header.Render(mutSrc, c.sceneName)
+
+	return &model.Source{
+		DestPath:   fmt.Sprintf("%s/%sInteractor.swift", c.sourcePath, c.sceneName),
+		SourceCode: mutSrc,
+	}
 }
 
 func (c *SourceConverter) RenderPresenter(src string) *model.Source {

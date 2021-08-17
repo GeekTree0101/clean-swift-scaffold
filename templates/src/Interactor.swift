@@ -10,7 +10,7 @@ import Foundation
 
 protocol __SCENE_NAME__BusinessLogic: AnyObject {
 
-  // clean-swift-scaffold-generate-business-interface (do-not-remove-comments)
+// clean-swift-scaffold-generate-business-interface (do-not-remove-comments)
 }
 
 protocol __SCENE_NAME__DataStore: AnyObject {
@@ -23,9 +23,9 @@ final class __SCENE_NAME__Interactor: __SCENE_NAME__DataStore {
 
 }
 
-
 // MARK: - Business Logic
+
 extension __SCENE_NAME__Interactor: __SCENE_NAME__BusinessLogic {
 
-  // clean-swift-scaffold-generate-business-implementation (do-not-remove-comments)
+// clean-swift-scaffold-generate-business-implementation (do-not-remove-comments)
 }

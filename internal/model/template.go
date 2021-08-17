@@ -90,6 +90,36 @@ func RenderPresenterImpl(sceneName string, usecase string, indentation int) stri
 	return mutStr
 }
 
+func RenderInteractorInterface(sceneName string, usecase string, indentation int) string {
+
+	return fmt.Sprintf(
+		"%sfunc %s(request: %sModel.%s.Request)",
+		whiteSpace(indentation),
+		lowerFirstChar(usecase),
+		sceneName,
+		usecase,
+	)
+}
+
+func RenderInteractorImpl(sceneName string, usecase string, indentation int) string {
+
+	mutStr := ""
+
+	// Open
+	mutStr += fmt.Sprintf(
+		"%sfunc %s(request: %sModel.%s.Request) {\n\n",
+		whiteSpace(indentation),
+		lowerFirstChar(usecase),
+		sceneName,
+		usecase,
+	)
+
+	// Close
+	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
+
+	return mutStr
+}
+
 func lowerFirstChar(str string) string {
 	for i, v := range str {
 		return string(unicode.ToLower(v)) + str[i+1:]
