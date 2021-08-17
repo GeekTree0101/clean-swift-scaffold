@@ -14,7 +14,7 @@ var (
 		Run: func(cmd *cobra.Command, args []string) {
 
 			if len(name) == 0 {
-				fmt.Println("invalid usecase name")
+				fmt.Println("[Error] invalid usecase name")
 				return
 			}
 
@@ -28,7 +28,11 @@ var (
 				},
 			)
 
-			gen.Run()
+			err := gen.Run()
+
+			if err != nil {
+				fmt.Printf("[Error] failed to generate: %s\n", err.Error())
+			}
 
 		},
 	}
