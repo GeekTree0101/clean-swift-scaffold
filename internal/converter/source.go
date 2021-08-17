@@ -65,12 +65,33 @@ func (c *SourceConverter) RenderAll() ([]model.Source, error) {
 		return nil, err
 	}
 
+	interactorTestsByte, err := ioutil.ReadFile(fmt.Sprintf("%s/test/Interactor.swift", c.config.TemplatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
+	presenterTestsByte, err := ioutil.ReadFile(fmt.Sprintf("%s/test/Presenter.swift", c.config.TemplatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
+	displayTestsByte, err := ioutil.ReadFile(fmt.Sprintf("%s/test/ViewController.swift", c.config.TemplatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
 	sourceStrs := []model.Source{
 		*c.RenderInteractor(string(interactorByte)),
 		*c.RenderPresenter(string(presenterByte)),
 		*c.RenderViewController(string(displayByte)),
 		*c.RenderRouter(string(routerByte)),
 		*c.RenderModel(string(modelByte)),
+		*c.RenderInteractorTests(string(interactorTestsByte)),
+		*c.RenderPresenterTests(string(presenterTestsByte)),
+		*c.RenderViewControllerTests(string(displayTestsByte)),
 	}
 
 	return sourceStrs, nil
@@ -155,7 +176,7 @@ func (c *SourceConverter) RenderPresenterTests(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sPresenterTests.swift", c.config.SourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sPresenterTests.swift", c.config.TestPath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }
@@ -178,7 +199,7 @@ func (c *SourceConverter) RenderViewControllerTests(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sViewControllerTests.swift", c.config.SourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sViewControllerTests.swift", c.config.TestPath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }
@@ -200,7 +221,7 @@ func (c *SourceConverter) RenderInteractorTests(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sInteractorTests.swift", c.config.SourcePath, c.sceneName),
+		DestPath:   fmt.Sprintf("%s/%sInteractorTests.swift", c.config.TestPath, c.sceneName),
 		SourceCode: mutSrc,
 	}
 }
