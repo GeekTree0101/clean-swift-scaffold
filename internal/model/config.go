@@ -15,7 +15,7 @@ type Config struct {
 	Org          string `yaml:"organization"`
 	Copyright    string `yaml:"copyright"`
 	TemplatePath string `yaml:"template_path"`
-	Intentation  int    `yaml:"intentation"`
+	Indentation  int    `yaml:"indentation"`
 	SourcePath   string `yaml:"source_path"`
 	TestPath     string `yaml:"test_path"`
 }
@@ -25,7 +25,7 @@ func (c *Config) Description() string {
 	mutDesc += fmt.Sprintf("organization: %s\n", c.Org)
 	mutDesc += fmt.Sprintf("copyright: %s\n", c.Copyright)
 	mutDesc += fmt.Sprintf("template path: %s\n", c.TemplatePath)
-	mutDesc += fmt.Sprintf("intentation: %d\n", c.Intentation)
+	mutDesc += fmt.Sprintf("indentation: %d\n", c.Indentation)
 	mutDesc += fmt.Sprintf("source path: %s\n", c.SourcePath)
 	mutDesc += fmt.Sprintf("test path: %s\n", c.TestPath)
 	return mutDesc

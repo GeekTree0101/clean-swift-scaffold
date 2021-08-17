@@ -116,7 +116,7 @@ func (c *SourceConverter) RenderInteractor(src string) *model.Source {
 	ifs := []string{}
 
 	for _, uc := range c.usecases {
-		ifs = append(ifs, model.RenderInteractorInterface(c.sceneName, uc, c.config.Intentation))
+		ifs = append(ifs, model.RenderInteractorInterface(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, interfaceCompositionToken, strings.Join(ifs, "\n"))
@@ -124,7 +124,7 @@ func (c *SourceConverter) RenderInteractor(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderInteractorImpl(c.sceneName, uc, c.config.Intentation))
+		imples = append(imples, model.RenderInteractorImpl(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
@@ -152,7 +152,7 @@ func (c *SourceConverter) RenderPresenter(src string) *model.Source {
 	ifs := []string{}
 
 	for _, uc := range c.usecases {
-		ifs = append(ifs, model.RenderPresenterInterface(c.sceneName, uc, c.config.Intentation))
+		ifs = append(ifs, model.RenderPresenterInterface(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, interfaceCompositionToken, strings.Join(ifs, "\n"))
@@ -160,7 +160,7 @@ func (c *SourceConverter) RenderPresenter(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderPresenterImpl(c.sceneName, uc, c.config.Intentation))
+		imples = append(imples, model.RenderPresenterImpl(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
@@ -187,7 +187,7 @@ func (c *SourceConverter) RenderPresenterTests(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderDisplaySpy(c.sceneName, uc, c.config.Intentation))
+		imples = append(imples, model.RenderDisplaySpy(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
@@ -215,7 +215,7 @@ func (c *SourceConverter) RenderViewControllerTests(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderInteractorSpy(c.sceneName, uc, c.config.Intentation))
+		imples = append(imples, model.RenderInteractorSpy(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
@@ -242,7 +242,7 @@ func (c *SourceConverter) RenderInteractorTests(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderPresenterSpy(c.sceneName, uc, c.config.Intentation))
+		imples = append(imples, model.RenderPresenterSpy(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
@@ -270,7 +270,7 @@ func (c *SourceConverter) RenderViewController(src string) *model.Source {
 	ifs := []string{}
 
 	for _, uc := range c.usecases {
-		ifs = append(ifs, model.RenderDisplayInterface(c.sceneName, uc, c.config.Intentation))
+		ifs = append(ifs, model.RenderDisplayInterface(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, interfaceCompositionToken, strings.Join(ifs, "\n"))
@@ -278,7 +278,7 @@ func (c *SourceConverter) RenderViewController(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderDisplayImpl(c.sceneName, uc, c.config.Intentation))
+		imples = append(imples, model.RenderDisplayImpl(c.sceneName, uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
@@ -304,7 +304,7 @@ func (c *SourceConverter) RenderModel(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		imples = append(imples, model.RenderUsecaseTemplate(uc, c.config.Intentation))
+		imples = append(imples, model.RenderUsecaseTemplate(uc, c.config.Indentation))
 	}
 
 	mutSrc = strings.ReplaceAll(mutSrc, compositionToken, strings.Join(imples, "\n\n"))

@@ -19,7 +19,7 @@ func createSource() *converter.SourceConverter {
 		TemplatePath: "../../templates",
 		SourcePath:   "./Playground/Sources",
 		TestPath:     "./Playground/Tests",
-		Intentation:  2,
+		Indentation:  2,
 	}
 
 	header := converter.NewHeaderConverter(

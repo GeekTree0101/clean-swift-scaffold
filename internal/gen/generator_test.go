@@ -49,8 +49,8 @@ func TestReadConfig(t *testing.T) {
 		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../Playground/Tests", config.TestPath)
 	}
 
-	if config.Intentation != 4 {
-		t.Errorf("invalid value\nexpect:\n%d\noutput:\n%d\n", 4, config.Intentation)
+	if config.Indentation != 4 {
+		t.Errorf("invalid value\nexpect:\n%d\noutput:\n%d\n", 4, config.Indentation)
 	}
 }
 

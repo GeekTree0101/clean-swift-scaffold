@@ -3,4 +3,4 @@ copyright: Geektree0101
 template_path: ../../templates
 source_path: ../../Playground/Sources
 test_path: ../../Playground/Tests
-intentation: 4
+indentation: 4
