@@ -52,12 +52,13 @@ func (gen *Generator) Run() error {
 		today,
 	)
 
-	// TODO: RUN, sources, error & save to destinations :]
-	source.RenderAll()
+	sources, err := source.RenderAll()
 
-	// TODO: save to destination. you are so lucy :]
+	if err != nil {
+		return err
+	}
 
-	return nil
+	return gen.Save(sources)
 }
 
 func (gen *Generator) ReadConfig() (*model.Config, error) {
@@ -95,4 +96,9 @@ func (gen *Generator) ReadConfig() (*model.Config, error) {
 	}
 
 	return config, nil
+}
+
+func (gen *Generator) Save([]model.Source) error {
+
+	return nil
 }
