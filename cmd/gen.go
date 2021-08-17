@@ -9,12 +9,14 @@ import (
 
 var (
 	genCmd = &cobra.Command{
-		Use:   "gen",
-		Short: "gnerate spy",
+		Use:   "run",
+		Short: "generate source & unit tests files",
 		Run: func(cmd *cobra.Command, args []string) {
 
+			fmt.Printf("\033[32m%s\033[0m\n", logo)
+
 			if len(name) == 0 {
-				fmt.Println("[Error] invalid usecase name")
+				fmt.Println("[Error] invalid usecase name\033[0m")
 				return
 			}
 
@@ -31,7 +33,9 @@ var (
 			err := gen.Run()
 
 			if err != nil {
-				fmt.Printf("[Error] failed to generate: %s\n", err.Error())
+				fmt.Printf("\033[31m[Error] failed to generate: %s\n\033[0m", err.Error())
+			} else {
+				fmt.Printf("\033[32m[Log] Done!\n\n\033[0m")
 			}
 
 		},

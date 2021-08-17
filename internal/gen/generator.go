@@ -40,7 +40,7 @@ func (gen *Generator) Run() error {
 		return err
 	}
 
-	fmt.Printf("[Log] Loaded configuration:\n%s\n\n", config.Description())
+	fmt.Printf("\033[33m[Log] config.yaml:\n%s\n\n\033[0m", config.Description())
 
 	today := time.Now()
 
@@ -55,7 +55,7 @@ func (gen *Generator) Run() error {
 		today,
 	)
 
-	fmt.Printf("[Log] rendering info:\n%s\n\n", source.Description())
+	fmt.Printf("\033[33m[Log] rendering info:\n%s\n\n\033[0m", source.Description())
 
 	sources, err := source.RenderAll()
 
@@ -63,14 +63,12 @@ func (gen *Generator) Run() error {
 		return err
 	}
 
-	fmt.Printf("[Log] compiled source count: %d\n\n", len(sources))
+	fmt.Printf("\033[33m[Log] compiled source count: %d\n\n\033[0m", len(sources))
 
 	return gen.Save(sources, config)
 }
 
 func (gen *Generator) ReadConfig() (*model.Config, error) {
-
-	fmt.Printf("[Log] Loading %s/config.yaml\n\n", gen.flag.ConfigFilePath)
 
 	content, err := ioutil.ReadFile(fmt.Sprintf("%s/config.yaml", gen.flag.ConfigFilePath))
 
