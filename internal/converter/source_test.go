@@ -73,7 +73,7 @@ func TestRenderRouter(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Sources/ArticleDetailRouter.swift"
+	expectedDestPath := "./Playground/Sources/ArticleDetail/ArticleDetailRouter.swift"
 
 	t.Run("render expected router", func(t *testing.T) {
 		// given
@@ -107,7 +107,7 @@ func TestModel(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Sources/ArticleDetailModel.swift"
+	expectedDestPath := "./Playground/Sources/ArticleDetail/ArticleDetailModel.swift"
 
 	t.Run("render model", func(t *testing.T) {
 		// given
@@ -142,7 +142,7 @@ func TestViewController(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Sources/ArticleDetailViewController.swift"
+	expectedDestPath := "./Playground/Sources/ArticleDetail/ArticleDetailViewController.swift"
 
 	t.Run("render view controller", func(t *testing.T) {
 		// given
@@ -177,7 +177,7 @@ func TestPresenter(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Sources/ArticleDetailPresenter.swift"
+	expectedDestPath := "./Playground/Sources/ArticleDetail/ArticleDetailPresenter.swift"
 
 	t.Run("render presenter", func(t *testing.T) {
 		// given
@@ -212,7 +212,7 @@ func TestInteractor(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Sources/ArticleDetailInteractor.swift"
+	expectedDestPath := "./Playground/Sources/ArticleDetail/ArticleDetailInteractor.swift"
 
 	t.Run("return expected interactor", func(t *testing.T) {
 		// given
@@ -246,7 +246,7 @@ func TestPresenterTests(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Tests/ArticleDetailPresenterTests.swift"
+	expectedDestPath := "./Playground/Tests/ArticleDetail/ArticleDetailPresenterTests.swift"
 
 	t.Run("render presenter tests", func(t *testing.T) {
 		// given
@@ -281,7 +281,7 @@ func TestInteractorTests(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Tests/ArticleDetailInteractorTests.swift"
+	expectedDestPath := "./Playground/Tests/ArticleDetail/ArticleDetailInteractorTests.swift"
 
 	t.Run("render interactor tests", func(t *testing.T) {
 		// given
@@ -316,7 +316,7 @@ func TestDisplayTests(t *testing.T) {
 	dummySrc := string(templateData)
 	expectedSrc := string(expectedData)
 
-	expectedDestPath := "./Playground/Tests/ArticleDetailViewControllerTests.swift"
+	expectedDestPath := "./Playground/Tests/ArticleDetail/ArticleDetailViewControllerTests.swift"
 
 	t.Run("render view controller tests", func(t *testing.T) {
 		// given

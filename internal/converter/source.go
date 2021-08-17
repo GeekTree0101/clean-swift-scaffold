@@ -123,7 +123,12 @@ func (c *SourceConverter) RenderInteractor(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sInteractor.swift", c.config.SourcePath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sInteractor.swift",
+			c.config.SourcePath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
@@ -154,7 +159,12 @@ func (c *SourceConverter) RenderPresenter(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sPresenter.swift", c.config.SourcePath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sPresenter.swift",
+			c.config.SourcePath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
@@ -176,7 +186,12 @@ func (c *SourceConverter) RenderPresenterTests(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sPresenterTests.swift", c.config.TestPath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sPresenterTests.swift",
+			c.config.TestPath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
@@ -199,7 +214,12 @@ func (c *SourceConverter) RenderViewControllerTests(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sViewControllerTests.swift", c.config.TestPath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sViewControllerTests.swift",
+			c.config.TestPath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
@@ -221,7 +241,12 @@ func (c *SourceConverter) RenderInteractorTests(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sInteractorTests.swift", c.config.TestPath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sInteractorTests.swift",
+			c.config.TestPath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
@@ -252,7 +277,12 @@ func (c *SourceConverter) RenderViewController(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sViewController.swift", c.config.SourcePath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sViewController.swift",
+			c.config.SourcePath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
@@ -273,7 +303,12 @@ func (c *SourceConverter) RenderModel(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sModel.swift", c.config.SourcePath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sModel.swift",
+			c.config.SourcePath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
@@ -285,7 +320,12 @@ func (c *SourceConverter) RenderRouter(src string) *model.Source {
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{
-		DestPath:   fmt.Sprintf("%s/%sRouter.swift", c.config.SourcePath, c.sceneName),
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sRouter.swift",
+			c.config.SourcePath,
+			c.sceneName,
+			c.sceneName,
+		),
 		SourceCode: mutSrc,
 	}
 }
