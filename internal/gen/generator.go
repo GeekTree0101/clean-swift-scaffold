@@ -107,9 +107,9 @@ func (gen *Generator) ReadConfig() (*model.Config, error) {
 	return config, nil
 }
 
-func (gen *Generator) Save(sources []model.Source) error {
+func (gen *Generator) Save(sources []model.Source, config *model.Config) error {
 
-	err := gen.makeDirs()
+	err := gen.makeDirs(config)
 
 	if err != nil {
 		return err
@@ -128,9 +128,9 @@ func (gen *Generator) Save(sources []model.Source) error {
 	return nil
 }
 
-func (gen *Generator) makeDirs() error {
-	srcDir := fmt.Sprintf("%s/%s", gen.flag.SourcePath, gen.flag.Name)
-	testsDir := fmt.Sprintf("%s/%s", gen.flag.TestPath, gen.flag.Name)
+func (gen *Generator) makeDirs(config *model.Config) error {
+	srcDir := fmt.Sprintf("%s/%s", config.SourcePath, gen.flag.Name)
+	testsDir := fmt.Sprintf("%s/%s", config.TestPath, gen.flag.Name)
 
 	err := os.MkdirAll(srcDir, 0777)
 
