@@ -68,12 +68,10 @@ func (c *SourceConverter) RenderModel(src string) *model.Source {
 	imples := []string{}
 
 	for _, uc := range c.usecases {
-		mutTemplate := model.UsecaseTemplate
-		mutTemplate = strings.ReplaceAll(mutTemplate, "__USECASE__", uc)
-		imples = append(imples, mutTemplate)
+		imples = append(imples, model.RenderUsecaseTemplate(uc, c.indentation))
 	}
 
-	mutSrc = strings.ReplaceAll(mutSrc, compositionToken, strings.Join(imples, "\n"))
+	mutSrc = strings.ReplaceAll(mutSrc, compositionToken, strings.Join(imples, "\n\n"))
 	mutSrc = c.header.Render(mutSrc, c.sceneName)
 
 	return &model.Source{

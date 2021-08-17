@@ -7,5 +7,6 @@
 //
 
 enum __SCENE_NAME__Model {
-  // clean-swift-scaffold-generate-dto (do-not-remove-comments)
+  
+// clean-swift-scaffold-generate-dto (do-not-remove-comments)
 }

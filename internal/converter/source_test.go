@@ -1,6 +1,7 @@
 package converter_test
 
 import (
+	"io/ioutil"
 	"testing"
 	"time"
 
@@ -17,6 +18,7 @@ func createSource() *converter.SourceConverter {
 			Org:          "miro.inc",
 			Copyright:    "Geektree0101",
 			TemplatePath: "",
+			Intentation:  2,
 		},
 		date,
 	)
@@ -27,6 +29,7 @@ func createSource() *converter.SourceConverter {
 		"./Playground/Sources",
 		"./Playground/Tests",
 		date,
+		2,
 		header,
 	)
 }
@@ -123,60 +126,15 @@ func TestRenderRouter(t *testing.T) {
 
 func TestModel(t *testing.T) {
 
-	dummySrc := `//
-	//  __SCENE_NAME__Model.swift
-	//  __ORGANIZATION__
-	//
-	//  Created by clean-swift-scaffold on __DATE__.
-	//  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.
-	//
-	
-	enum __SCENE_NAME__Model {
-		// clean-swift-scaffold-generate-dto (do-not-remove-comments)
-	}`
+	templateData, err := ioutil.ReadFile("../../templates/src/Model.swift")
+	expectedData, err := ioutil.ReadFile("../../test/ArticleDetailModel.swift")
 
-	expectedSrc := `//
-	//  ArticleDetailModel.swift
-	//  miro.inc
-	//
-	//  Created by clean-swift-scaffold on 12/10/2020.
-	//  Copyright © 2020 Geektree0101. All rights reserved.
-	//
-	
-	enum ArticleDetailModel {
-	
-		enum Reload {
+	if err != nil {
+		panic(err.Error())
+	}
 
-			struct Request {
-
-			}
-
-			struct Response {
-
-			}
-
-			struct ViewModel {
-
-			}
-			
-		}
-
-		enum Next {
-
-			struct Request {
-
-			}
-
-			struct Response {
-
-			}
-
-			struct ViewModel {
-
-			}
-			
-		}
-	}`
+	dummySrc := string(templateData)
+	expectedSrc := string(expectedData)
 
 	expectedDestPath := "./Playground/Sources/ArticleDetailModel.swift"
 
