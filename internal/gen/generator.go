@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 	"time"
 
@@ -98,7 +99,41 @@ func (gen *Generator) ReadConfig() (*model.Config, error) {
 	return config, nil
 }
 
-func (gen *Generator) Save([]model.Source) error {
+func (gen *Generator) Save(sources []model.Source) error {
 
+	err := gen.makeDirs()
+
+	if err != nil {
+		return err
+	}
+
+	for _, s := range sources {
+
+		bytes := []byte(s.SourceCode)
+		err := ioutil.WriteFile(s.DestPath, bytes, 0777)
+
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (gen *Generator) makeDirs() error {
+	srcDir := fmt.Sprintf("%s/%s", gen.flag.SourcePath, gen.flag.Name)
+	testsDir := fmt.Sprintf("%s/%s", gen.flag.TestPath, gen.flag.Name)
+
+	err := os.MkdirAll(srcDir, 0777)
+
+	if err != nil {
+		return err
+	}
+
+	err = os.MkdirAll(testsDir, 0777)
+
+	if err != nil {
+		return err
+	}
 	return nil
 }

@@ -53,3 +53,25 @@ func TestReadConfig(t *testing.T) {
 		t.Errorf("invalid value\nexpect:\n%d\noutput:\n%d\n", 4, config.Intentation)
 	}
 }
+
+func TestSave(t *testing.T) {
+
+	// given
+	flag := gen.Genflag{
+		Name:           "ArticleDetail",
+		UsecasesString: "Reload,Next",
+		SourcePath:     "../../Playground/Sources",
+		TestPath:       "../../Playground/Tests",
+		ConfigFilePath: "../../test",
+	}
+
+	gen := gen.NewGenerator(flag)
+
+	// when
+	err := gen.Run()
+
+	// then
+	if err != nil {
+		t.Error(err.Error())
+	}
+}
