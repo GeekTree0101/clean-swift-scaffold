@@ -2,6 +2,7 @@ package converter
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strings"
 	"time"
 
@@ -9,13 +10,14 @@ import (
 )
 
 type SourceConverter struct {
-	sceneName   string
-	usecases    []string
-	sourcePath  string
-	testPath    string
-	date        time.Time
-	indentation int
-	header      *HeaderConverter
+	sceneName    string
+	usecases     []string
+	sourcePath   string
+	testPath     string
+	templatePath string
+	date         time.Time
+	indentation  int
+	header       *HeaderConverter
 }
 
 func NewSourceConverter(
@@ -23,25 +25,63 @@ func NewSourceConverter(
 	usecases []string,
 	sourcePath string,
 	testPath string,
+	templatePath string,
 	date time.Time,
 	indentation int,
 	header *HeaderConverter) *SourceConverter {
 
 	return &SourceConverter{
-		sceneName:   sceneName,
-		usecases:    usecases,
-		sourcePath:  sourcePath,
-		testPath:    testPath,
-		date:        date,
-		indentation: indentation,
-		header:      header,
+		sceneName:    sceneName,
+		usecases:     usecases,
+		sourcePath:   sourcePath,
+		testPath:     testPath,
+		templatePath: templatePath,
+		date:         date,
+		indentation:  indentation,
+		header:       header,
 	}
 }
 
 func (c *SourceConverter) RenderAll() ([]model.Source, error) {
-	// TODO:
+	interactorByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Interactor.swift", c.templatePath))
 
-	return []model.Source{}, nil
+	if err != nil {
+		return nil, err
+	}
+
+	presenterByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Presenter.swift", c.templatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
+	displayByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/ViewController.swift", c.templatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
+	routerByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Router.swift", c.templatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
+	modelByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Model.swift", c.templatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
+	sourceStrs := []model.Source{
+		*c.RenderInteractor(string(interactorByte)),
+		*c.RenderPresenter(string(presenterByte)),
+		*c.RenderViewController(string(displayByte)),
+		*c.RenderRouter(string(routerByte)),
+		*c.RenderModel(string(modelByte)),
+	}
+
+	return sourceStrs, nil
 }
 
 func (c *SourceConverter) RenderInteractor(src string) *model.Source {

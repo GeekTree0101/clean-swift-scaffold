@@ -28,10 +28,34 @@ func createSource() *converter.SourceConverter {
 		[]string{"Reload", "Next"},
 		"./Playground/Sources",
 		"./Playground/Tests",
+		"../../templates",
 		date,
 		2,
 		header,
 	)
+}
+
+// MARK: - Render All
+
+func TestRenderAll(t *testing.T) {
+
+	t.Run("render all", func(t *testing.T) {
+		// given
+		sut := createSource()
+
+		// when
+		out, err := sut.RenderAll()
+
+		// then
+		if err != nil {
+			t.Error(err.Error())
+			return
+		}
+
+		if len(out) == 0 {
+			t.Errorf("unexpected rendering, output: %d", len(out))
+		}
+	})
 }
 
 // MARK: - Router

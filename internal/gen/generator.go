@@ -50,6 +50,7 @@ func (gen *Generator) Run() {
 		gen.usecases,
 		gen.sourcePath,
 		gen.testPath,
+		gen.config.TemplatePath,
 		today,
 		gen.config.Intentation,
 		header,
