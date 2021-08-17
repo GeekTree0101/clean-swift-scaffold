@@ -86,22 +86,16 @@ func (gen *Generator) ReadConfig() (*model.Config, error) {
 		return nil, err
 	}
 
-	if len(config.SourcePath) == 0 {
-
-		if len(gen.flag.SourcePath) == 0 {
-			return nil, errors.New("invalid source path")
-		}
-
+	if len(gen.flag.SourcePath) != 0 {
 		config.SourcePath = gen.flag.SourcePath
+	} else if len(config.SourcePath) == 0 {
+		return nil, errors.New("invalid source path")
 	}
 
-	if len(config.TestPath) == 0 {
-
-		if len(gen.flag.TestPath) == 0 {
-			return nil, errors.New("invalid test path")
-		}
-
+	if len(gen.flag.TestPath) != 0 {
 		config.TestPath = gen.flag.TestPath
+	} else if len(config.TestPath) == 0 {
+		return nil, errors.New("invalid test path")
 	}
 
 	return config, nil
