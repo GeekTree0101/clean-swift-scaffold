@@ -40,6 +40,8 @@ func (gen *Generator) Run() error {
 		return err
 	}
 
+	fmt.Printf("[Log] Loaded configuration:\n%s\n\n", config.Description())
+
 	today := time.Now()
 
 	source := converter.NewSourceConverter(
@@ -53,16 +55,22 @@ func (gen *Generator) Run() error {
 		today,
 	)
 
+	fmt.Printf("[Log] rendering info:\n%s\n\n", source.Description())
+
 	sources, err := source.RenderAll()
 
 	if err != nil {
 		return err
 	}
 
-	return gen.Save(sources)
+	fmt.Printf("[Log] compiled source count: %d\n\n", len(sources))
+
+	return gen.Save(sources, config)
 }
 
 func (gen *Generator) ReadConfig() (*model.Config, error) {
+
+	fmt.Printf("[Log] Loading %s/config.yaml\n\n", gen.flag.ConfigFilePath)
 
 	content, err := ioutil.ReadFile(fmt.Sprintf("%s/config.yaml", gen.flag.ConfigFilePath))
 
