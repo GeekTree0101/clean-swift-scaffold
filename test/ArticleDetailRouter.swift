@@ -1,6 +1,6 @@
 //
 //  ArticleDetailRouter.swift
-//  miro.inc
+//  Miro
 //
 //  Created by clean-swift-scaffold on 12/10/2020.
 //  Copyright © 2020 Geektree0101. All rights reserved.

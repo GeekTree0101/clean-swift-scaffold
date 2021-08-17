@@ -14,7 +14,7 @@ func createSource() *converter.SourceConverter {
 	date := time.Date(2020, 10, 12, 0, 0, 0, 0, time.UTC)
 
 	config := &model.Config{
-		Org:          "miro.inc",
+		Org:          "Miro",
 		Copyright:    "Geektree0101",
 		TemplatePath: "../../templates",
 		SourcePath:   "./Playground/Sources",

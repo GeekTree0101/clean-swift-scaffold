@@ -23,7 +23,7 @@ enum __SCENE_NAME__Model {
 
 const expectedSourceCode string = `//
 //  ArticleDetailModel.swift
-//  miro.inc
+//  Miro
 //
 //  Created by clean-swift-scaffold on 12/10/2020.
 //  Copyright © 2020 Geektree0101. All rights reserved.
@@ -39,7 +39,7 @@ func TestHeader(t *testing.T) {
 	t.Run("return expected header", func(t *testing.T) {
 		// given
 		config := model.Config{
-			Org:          "miro.inc",
+			Org:          "Miro",
 			Copyright:    "Geektree0101",
 			TemplatePath: "",
 		}
