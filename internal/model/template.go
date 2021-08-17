@@ -3,6 +3,7 @@ package model
 import (
 	"fmt"
 	"strings"
+	"unicode"
 )
 
 func RenderUsecaseTemplate(usecase string, indentation int) string {
@@ -87,6 +88,13 @@ func RenderPresenterImpl(sceneName string, usecase string, indentation int) stri
 	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
 
 	return mutStr
+}
+
+func lowerFirstChar(str string) string {
+	for i, v := range str {
+		return string(unicode.ToLower(v)) + str[i+1:]
+	}
+	return str
 }
 
 func whiteSpace(i int) string {
