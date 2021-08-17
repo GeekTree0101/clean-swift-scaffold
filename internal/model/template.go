@@ -59,6 +59,36 @@ func RenderDisplayImpl(sceneName string, usecase string, indentation int) string
 	return mutStr
 }
 
+func RenderPresenterInterface(sceneName string, usecase string, indentation int) string {
+
+	return fmt.Sprintf(
+		"%sfunc present%s(response: %sModel.%s.Response)",
+		whiteSpace(indentation),
+		usecase,
+		sceneName,
+		usecase,
+	)
+}
+
+func RenderPresenterImpl(sceneName string, usecase string, indentation int) string {
+
+	mutStr := ""
+
+	// Open
+	mutStr += fmt.Sprintf(
+		"%sfunc present%s(response: %sModel.%s.Response) {\n\n",
+		whiteSpace(indentation),
+		usecase,
+		sceneName,
+		usecase,
+	)
+
+	// Close
+	mutStr += fmt.Sprintf("%s}", whiteSpace(indentation))
+
+	return mutStr
+}
+
 func whiteSpace(i int) string {
 	whitespaces := make([]string, i)
 	for i := range whitespaces {
@@ -76,11 +106,4 @@ const (
 		}
 	`
 	InteractorInterpaceTemplate string = `func __METHOD_NAME__(request: __SCENE_NAME__.__USECASE__.Request)`
-	// presenter
-	PresenterImplTemplate string = `
-	  func present__USECASE__(response: __SCENE_NAME__.__USECASE__.Response) {
-
-		}
-	`
-	PresenterInterpaceTemplate string = `func present__USECASE__(response: __SCENE_NAME__.__USECASE__.Response)`
 )

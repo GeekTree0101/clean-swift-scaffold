@@ -10,7 +10,7 @@ import UIKit
 
 protocol __SCENE_NAME__PresentationLogic: AnyObject {
 
-  // clean-swift-scaffold-generate-presenter-interface (do-not-remove-comments)
+// clean-swift-scaffold-generate-presenter-interface (do-not-remove-comments)
 }
 
 final class __SCENE_NAME__Presenter {
@@ -23,5 +23,5 @@ final class __SCENE_NAME__Presenter {
 
 extension __SCENE_NAME__Presenter: __SCENE_NAME__PresentationLogic {
 
-  // clean-swift-scaffold-generate-presenter-implementation (do-not-remove-comments)
+// clean-swift-scaffold-generate-presenter-implementation (do-not-remove-comments)
 }
