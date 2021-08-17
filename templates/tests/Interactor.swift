@@ -14,7 +14,7 @@ final class __SCENE_NAME__InteractorTests: XCTestCase {
 
   final class __SCENE_NAME__PresenterSpy: __SCENE_NAME__PresentationLogic {
 
-    // clean-swift-scaffold-generate-presenter-spy (do-not-remove-comments)
+// clean-swift-scaffold-generate-presenter-spy (do-not-remove-comments)
   }
 
   // MARK: - Properties

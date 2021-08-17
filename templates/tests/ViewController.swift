@@ -16,7 +16,7 @@ final class __SCENE_NAME__ViewControllerTests: XCTestCase {
 
   final class __SCENE_NAME__InteractorSpy: __SCENE_NAME__BusinessLogic {
 
-    // clean-swift-scaffold-generate-business-spy (do-not-remove-comments)
+// clean-swift-scaffold-generate-business-spy (do-not-remove-comments)
   }
 
   final class __SCENE_NAME__RouterSpy: __SCENE_NAME__RoutingLogic, __SCENE_NAME__DataPassing {
