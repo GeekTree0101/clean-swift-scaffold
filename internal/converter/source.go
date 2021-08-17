@@ -160,6 +160,28 @@ func (c *SourceConverter) RenderPresenterTests(src string) *model.Source {
 	}
 }
 
+func (c *SourceConverter) RenderViewControllerTests(src string) *model.Source {
+
+	// FIXME
+	var mutSrc string = src
+	mutSrc = strings.ReplaceAll(mutSrc, "__SCENE_NAME__", c.sceneName)
+
+	implementCompositionToken := "// clean-swift-scaffold-generate-business-spy (do-not-remove-comments)"
+
+	imples := []string{}
+
+	for _, uc := range c.usecases {
+		imples = append(imples, model.RenderInteractorSpy(c.sceneName, uc, c.config.Intentation))
+	}
+
+	mutSrc = strings.ReplaceAll(mutSrc, implementCompositionToken, strings.Join(imples, "\n\n"))
+	mutSrc = c.header.Render(mutSrc, c.sceneName)
+
+	return &model.Source{
+		DestPath:   fmt.Sprintf("%s/%sViewControllerTests.swift", c.config.SourcePath, c.sceneName),
+		SourceCode: mutSrc,
+	}
+}
 
 func (c *SourceConverter) RenderInteractorTests(src string) *model.Source {
 

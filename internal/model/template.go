@@ -73,6 +73,29 @@ func RenderDisplaySpy(sceneName string, usecase string, indentation int) string 
 	return mutStr
 }
 
+func RenderInteractorSpy(sceneName string, usecase string, indentation int) string {
+
+	calledProperty := fmt.Sprintf(
+		"%svar %sRequest: %sModel.%s.Request?",
+		whiteSpace(indentation*2),
+		lowerFirstChar(usecase),
+		sceneName,
+		usecase,
+	)
+
+	calledApply := fmt.Sprintf(
+		"self.%sRequest = request",
+		lowerFirstChar(usecase),
+	)
+
+	mutStr := ""
+	mutStr += calledProperty
+	mutStr += "\n\n"
+	mutStr += RenderInteractorInterface(sceneName, usecase, indentation*2)
+	mutStr += openAndCloseWithContent(calledApply, indentation)
+	return mutStr
+}
+
 func RenderPresenterSpy(sceneName string, usecase string, indentation int) string {
 
 	calledProperty := fmt.Sprintf(

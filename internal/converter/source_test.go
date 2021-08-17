@@ -301,3 +301,37 @@ func TestInteractorTests(t *testing.T) {
 	})
 
 }
+
+// MARK: - DisplayTests
+
+func TestDisplayTests(t *testing.T) {
+
+	templateData, err := ioutil.ReadFile("../../templates/test/ViewController.swift")
+	expectedData, err := ioutil.ReadFile("../../test/ArticleDetailViewControllerTests.swift")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	dummySrc := string(templateData)
+	expectedSrc := string(expectedData)
+
+	expectedDestPath := "./Playground/Sources/ArticleDetailViewControllerTests.swift"
+
+	t.Run("render view controller tests", func(t *testing.T) {
+		// given
+		sut := createSource()
+
+		// when
+		out := sut.RenderViewControllerTests(dummySrc)
+
+		// then
+		if out.DestPath != expectedDestPath {
+			t.Errorf("invalid destination path\nexpect:\n%s\noutput:\n%s\n", expectedDestPath, out.DestPath)
+		}
+
+		if out.SourceCode != expectedSrc {
+			t.Errorf("Failed to render\n expected:\n%s\noutput:\n%s\n", expectedSrc, out.SourceCode)
+		}
+	})
+}
