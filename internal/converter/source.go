@@ -9,12 +9,13 @@ import (
 )
 
 type SourceConverter struct {
-	sceneName  string
-	usecases   []string
-	sourcePath string
-	testPath   string
-	date       time.Time
-	header     *HeaderConverter
+	sceneName   string
+	usecases    []string
+	sourcePath  string
+	testPath    string
+	date        time.Time
+	indentation int
+	header      *HeaderConverter
 }
 
 func NewSourceConverter(
@@ -23,15 +24,17 @@ func NewSourceConverter(
 	sourcePath string,
 	testPath string,
 	date time.Time,
+	indentation int,
 	header *HeaderConverter) *SourceConverter {
 
 	return &SourceConverter{
-		sceneName:  sceneName,
-		usecases:   usecases,
-		sourcePath: sourcePath,
-		testPath:   testPath,
-		date:       date,
-		header:     header,
+		sceneName:   sceneName,
+		usecases:    usecases,
+		sourcePath:  sourcePath,
+		testPath:    testPath,
+		date:        date,
+		indentation: indentation,
+		header:      header,
 	}
 }
 

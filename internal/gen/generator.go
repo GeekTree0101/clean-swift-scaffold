@@ -51,6 +51,7 @@ func (gen *Generator) Run() {
 		gen.sourcePath,
 		gen.testPath,
 		today,
+		gen.config.Intentation,
 		header,
 	)
 
