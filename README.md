@@ -5,7 +5,7 @@
 [![Go](https://github.com/GeekTree0101/clean-swift-scaffold/actions/workflows/go.yml/badge.svg?branch=develop)](https://github.com/GeekTree0101/clean-swift-scaffold/actions/workflows/go.yml)
 
 
-### How to use?
+### Basic Usage
 
 <img height=300pt src="https://github.com/GeekTree0101/clean-swift-scaffold/blob/develop/res/example.png" />
 
@@ -19,9 +19,29 @@ test_path: ./Playground/Tests // base test file destination
 indentation: 2 // indentation
 ```
 
+#### add clean_swift_scaffold runner command on your command 
+```go
+var rootCmd = &cobra.Command{
+	Use:   "your cmd",
+	Short: "your cmd short marty",
+	Long:  "your cmd long something",
+}
+
+init() {
+  rootCmd.AddCommand(clean_swift_scaffold.NewRunnerCommand("**use_name**"))
+}
+
+func Execute() {
+	if err := rootCmd.Execute(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+```
+
 #### run 
 ```sh
-clean-swift-scaffold run -n Feed -u Fetch,Delete,Update
+your_command **use_name** -n Feed -u Fetch,Delete,Update
 ```
 
 flag list
