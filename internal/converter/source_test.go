@@ -17,8 +17,8 @@ func createSource() *converter.SourceConverter {
 		Org:          "Miro",
 		Copyright:    "Geektree0101",
 		TemplatePath: "../../templates",
-		SourcePath:   "./Playground/Sources",
-		TestPath:     "./Playground/Tests",
+		SourceDir:    "./Playground/Sources",
+		TestDir:      "./Playground/Tests",
 		Indentation:  2,
 	}
 

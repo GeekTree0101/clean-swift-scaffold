@@ -27,6 +27,6 @@ clean-swift-scaffold run -n Feed -u Fetch,Delete,Update
 ```
 - -n/--name: scene prefix
 - -u/--usecase: some model behavior (such as Fetch, Get, Reload, Delete and so on)
-- -c/--config: config.yaml path
-- -s/--source: custom source_path (default: config.yaml source_path)
-- -t/--test: custon test_path (default: config.yaml test_path)
+- -c/--config: config.yaml path ./some_dir/config.yaml or ./some_dir/some_config.yaml
+- -s/--source: custom base source_dir (default: config.yaml source_dir)
+- -t/--test: custon base test_dir (default: config.yaml test_dir)

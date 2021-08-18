@@ -16,8 +16,8 @@ import (
 type Genflag struct {
 	Name           string
 	UsecasesString string
-	SourcePath     string
-	TestPath       string
+	SourceDir      string
+	TestDir        string
 	ConfigFilePath string
 }
 
@@ -40,7 +40,7 @@ func (gen *Generator) Run() error {
 		return err
 	}
 
-	fmt.Printf("\033[33m[Log] config.yaml:\n%s\n\n\033[0m", config.Description())
+	fmt.Printf("\033[33m[Log] configuration info:\n%s\n\n\033[0m", config.Description())
 
 	today := time.Now()
 
@@ -70,7 +70,7 @@ func (gen *Generator) Run() error {
 
 func (gen *Generator) ReadConfig() (*model.Config, error) {
 
-	content, err := ioutil.ReadFile(fmt.Sprintf("%s/config.yaml", gen.flag.ConfigFilePath))
+	content, err := ioutil.ReadFile(gen.flag.ConfigFilePath)
 
 	if err != nil {
 		return nil, err
@@ -84,15 +84,15 @@ func (gen *Generator) ReadConfig() (*model.Config, error) {
 		return nil, err
 	}
 
-	if len(gen.flag.SourcePath) != 0 {
-		config.SourcePath = gen.flag.SourcePath
-	} else if len(config.SourcePath) == 0 {
+	if len(gen.flag.SourceDir) != 0 {
+		config.SourceDir = gen.flag.SourceDir
+	} else if len(config.SourceDir) == 0 {
 		return nil, errors.New("invalid source path")
 	}
 
-	if len(gen.flag.TestPath) != 0 {
-		config.TestPath = gen.flag.TestPath
-	} else if len(config.TestPath) == 0 {
+	if len(gen.flag.TestDir) != 0 {
+		config.TestDir = gen.flag.TestDir
+	} else if len(config.TestDir) == 0 {
 		return nil, errors.New("invalid test path")
 	}
 
@@ -121,8 +121,8 @@ func (gen *Generator) Save(sources []model.Source, config *model.Config) error {
 }
 
 func (gen *Generator) makeDirs(config *model.Config) error {
-	srcDir := fmt.Sprintf("%s/%s", config.SourcePath, gen.flag.Name)
-	testsDir := fmt.Sprintf("%s/%s", config.TestPath, gen.flag.Name)
+	srcDir := fmt.Sprintf("%s/%s", config.SourceDir, gen.flag.Name)
+	testsDir := fmt.Sprintf("%s/%s", config.TestDir, gen.flag.Name)
 
 	err := os.MkdirAll(srcDir, 0777)
 

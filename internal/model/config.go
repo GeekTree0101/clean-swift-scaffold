@@ -2,22 +2,13 @@ package model
 
 import "fmt"
 
-// Header components
-//
-//  __SCENE_NAME__ViewControllerTests.swift
-//  __ORGANIZATION__Tests
-//
-//  Created by clean-swift-scaffold on __DATE__.
-//  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.
-//
-
 type Config struct {
 	Org          string `yaml:"organization"`
 	Copyright    string `yaml:"copyright"`
 	TemplatePath string `yaml:"template_path"`
 	Indentation  int    `yaml:"indentation"`
-	SourcePath   string `yaml:"source_path"`
-	TestPath     string `yaml:"test_path"`
+	SourceDir    string `yaml:"source_dir"`
+	TestDir      string `yaml:"test_dir"`
 }
 
 func (c *Config) Description() string {
@@ -26,7 +17,7 @@ func (c *Config) Description() string {
 	mutDesc += fmt.Sprintf("copyright: %s\n", c.Copyright)
 	mutDesc += fmt.Sprintf("template path: %s\n", c.TemplatePath)
 	mutDesc += fmt.Sprintf("indentation: %d\n", c.Indentation)
-	mutDesc += fmt.Sprintf("source path: %s\n", c.SourcePath)
-	mutDesc += fmt.Sprintf("test path: %s\n", c.TestPath)
+	mutDesc += fmt.Sprintf("source dir: %s\n", c.SourceDir)
+	mutDesc += fmt.Sprintf("test dir: %s\n", c.TestDir)
 	return mutDesc
 }

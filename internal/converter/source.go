@@ -133,7 +133,7 @@ func (c *SourceConverter) RenderInteractor(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sInteractor.swift",
-			c.config.SourcePath,
+			c.config.SourceDir,
 			c.sceneName,
 			c.sceneName,
 		),
@@ -169,7 +169,7 @@ func (c *SourceConverter) RenderPresenter(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sPresenter.swift",
-			c.config.SourcePath,
+			c.config.SourceDir,
 			c.sceneName,
 			c.sceneName,
 		),
@@ -196,7 +196,7 @@ func (c *SourceConverter) RenderPresenterTests(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sPresenterTests.swift",
-			c.config.TestPath,
+			c.config.TestDir,
 			c.sceneName,
 			c.sceneName,
 		),
@@ -224,7 +224,7 @@ func (c *SourceConverter) RenderViewControllerTests(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sViewControllerTests.swift",
-			c.config.TestPath,
+			c.config.TestDir,
 			c.sceneName,
 			c.sceneName,
 		),
@@ -251,7 +251,7 @@ func (c *SourceConverter) RenderInteractorTests(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sInteractorTests.swift",
-			c.config.TestPath,
+			c.config.TestDir,
 			c.sceneName,
 			c.sceneName,
 		),
@@ -287,7 +287,7 @@ func (c *SourceConverter) RenderViewController(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sViewController.swift",
-			c.config.SourcePath,
+			c.config.SourceDir,
 			c.sceneName,
 			c.sceneName,
 		),
@@ -313,7 +313,7 @@ func (c *SourceConverter) RenderModel(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sModel.swift",
-			c.config.SourcePath,
+			c.config.SourceDir,
 			c.sceneName,
 			c.sceneName,
 		),
@@ -330,7 +330,7 @@ func (c *SourceConverter) RenderRouter(src string) *model.Source {
 	return &model.Source{
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sRouter.swift",
-			c.config.SourcePath,
+			c.config.SourceDir,
 			c.sceneName,
 			c.sceneName,
 		),

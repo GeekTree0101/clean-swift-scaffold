@@ -24,8 +24,8 @@ var (
 				gen.Genflag{
 					Name:           name,
 					UsecasesString: usecasesString,
-					SourcePath:     sourcePath,
-					TestPath:       testPath,
+					SourceDir:      sourceDir,
+					TestDir:        testDir,
 					ConfigFilePath: configFilePath,
 				},
 			)
@@ -42,17 +42,17 @@ var (
 	}
 	name           string
 	usecasesString string
-	sourcePath     string
-	testPath       string
+	sourceDir      string
+	testDir        string
 	configFilePath string
 )
 
 func init() {
 	genCmd.Flags().StringVarP(&name, "name", "n", "", "Usecase name, ex: -n Detail or --name Detail")
 	genCmd.Flags().StringVarP(&usecasesString, "usecases", "u", "", "Behavior names, ex: -u Reload,Next or --usecases Reload,Next")
-	genCmd.Flags().StringVarP(&configFilePath, "config", "c", ".", "Configure file path, ex: -t ./Projects or --test ./Projects")
+	genCmd.Flags().StringVarP(&configFilePath, "config", "c", "./config.yaml", "Configure file path, ex: -t ./some/config.yaml or --test ./some/config.yaml")
 	// optional flags
-	genCmd.Flags().StringVarP(&sourcePath, "source", "s", "", "Source dir, ex: -s ./Projects or --source ./Projects")
-	genCmd.Flags().StringVarP(&testPath, "test", "t", "", "Test dir, ex: -t ./Projects or --test ./Projects")
+	genCmd.Flags().StringVarP(&sourceDir, "source", "s", "", "Source dir, ex: -s ./Projects or --source ./Projects")
+	genCmd.Flags().StringVarP(&testDir, "test", "t", "", "Test dir, ex: -t ./Projects or --test ./Projects")
 	rootCmd.AddCommand(genCmd)
 }

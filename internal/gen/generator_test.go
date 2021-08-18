@@ -12,9 +12,9 @@ func TestReadConfig(t *testing.T) {
 	flag := gen.Genflag{
 		Name:           "ArticleDetail",
 		UsecasesString: "Reload,Next",
-		SourcePath:     "../../Playground/Sources",
-		TestPath:       "../../Playground/Tests",
-		ConfigFilePath: "../../test",
+		SourceDir:      "../../Playground/Sources",
+		TestDir:        "../../Playground/Tests",
+		ConfigFilePath: "../../test/config.yaml",
 	}
 
 	gen := gen.NewGenerator(flag)
@@ -40,13 +40,13 @@ func TestReadConfig(t *testing.T) {
 		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../templates", config.TemplatePath)
 	}
 
-	if config.SourcePath != "../../Playground/Sources" {
-		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../Playground/Sources", config.SourcePath)
+	if config.SourceDir != "../../Playground/Sources" {
+		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../Playground/Sources", config.SourceDir)
 
 	}
 
-	if config.TestPath != "../../Playground/Tests" {
-		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../Playground/Tests", config.TestPath)
+	if config.TestDir != "../../Playground/Tests" {
+		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "../../Playground/Tests", config.TestDir)
 	}
 
 	if config.Indentation != 4 {
@@ -60,9 +60,9 @@ func TestSave(t *testing.T) {
 	flag := gen.Genflag{
 		Name:           "ArticleDetail",
 		UsecasesString: "Reload,Next",
-		SourcePath:     "../../Playground/Sources",
-		TestPath:       "../../Playground/Tests",
-		ConfigFilePath: "../../test",
+		SourceDir:      "../../Playground/Sources",
+		TestDir:        "../../Playground/Tests",
+		ConfigFilePath: "../../test/config.yaml",
 	}
 
 	gen := gen.NewGenerator(flag)
