@@ -1,6 +1,6 @@
 //
 //  __SCENE_NAME__InteractorTests.swift
-//  __ORGANIZATION__Tests
+//  __TARGET_PROJECT_NAME__Tests
 //
 //  Created by clean-swift-scaffold on __DATE__.
 //  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import __ORGANIZATION__
+@testable import __TARGET_PROJECT_NAME__
 
 final class __SCENE_NAME__InteractorTests: XCTestCase {
 

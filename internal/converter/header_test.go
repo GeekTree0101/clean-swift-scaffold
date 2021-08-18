@@ -10,7 +10,7 @@ import (
 
 const dummySourceCode string = `//
 //  __SCENE_NAME__Model.swift
-//  __ORGANIZATION__
+//  __TARGET_PROJECT_NAME__
 //
 //  Created by clean-swift-scaffold on __DATE__.
 //  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.
@@ -39,9 +39,9 @@ func TestHeader(t *testing.T) {
 	t.Run("return expected header", func(t *testing.T) {
 		// given
 		config := model.Config{
-			Org:          "Miro",
-			Copyright:    "Geektree0101",
-			TemplatePath: "",
+			TargetProjectName: "Miro",
+			Copyright:         "Geektree0101",
+			TemplatePath:      "",
 		}
 
 		date := time.Date(2020, 10, 12, 0, 0, 0, 0, time.UTC)

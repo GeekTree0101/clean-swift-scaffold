@@ -32,8 +32,8 @@ func TestReadConfig(t *testing.T) {
 		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "Geektree0101", config.Copyright)
 	}
 
-	if config.Org != "Miro" {
-		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "Miro", config.Org)
+	if config.TargetProjectName != "Miro" {
+		t.Errorf("invalid value\nexpect:\n%s\noutput:\n%s\n", "Miro", config.TargetProjectName)
 	}
 
 	if config.TemplatePath != "../../templates" {

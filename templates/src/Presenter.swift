@@ -1,6 +1,6 @@
 //
 //  __SCENE_NAME__Presenter.swift
-//  __ORGANIZATION__
+//  __TARGET_PROJECT_NAME__
 //
 //  Created by clean-swift-scaffold on __DATE__.
 //  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.

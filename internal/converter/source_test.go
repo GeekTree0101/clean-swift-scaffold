@@ -14,12 +14,12 @@ func createSource() *converter.SourceConverter {
 	date := time.Date(2020, 10, 12, 0, 0, 0, 0, time.UTC)
 
 	config := &model.Config{
-		Org:          "Miro",
-		Copyright:    "Geektree0101",
-		TemplatePath: "../../templates",
-		SourceDir:    "./Playground/Sources",
-		TestDir:      "./Playground/Tests",
-		Indentation:  2,
+		TargetProjectName: "Miro",
+		Copyright:         "Geektree0101",
+		TemplatePath:      "../../templates",
+		SourceDir:         "./Playground/Sources",
+		TestDir:           "./Playground/Tests",
+		Indentation:       2,
 	}
 
 	header := converter.NewHeaderConverter(

@@ -13,7 +13,7 @@
 
 #### make config.yaml
 ```yaml
-organization: Miro // target project
+target_project_name: Miro // target project name
 copyright: Geektree0101 // copyright
 template_path: ./templates // templates path
 source_path: ./Playground/Sources // base source file destination

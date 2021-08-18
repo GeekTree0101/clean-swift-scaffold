@@ -10,9 +10,9 @@ import (
 )
 
 type HeaderConverter struct {
-	org       string
-	copyright string
-	date      time.Time
+	targetProjectName string
+	copyright         string
+	date              time.Time
 }
 
 func NewHeaderConverter(
@@ -20,9 +20,9 @@ func NewHeaderConverter(
 	date time.Time) *HeaderConverter {
 
 	return &HeaderConverter{
-		org:       config.Org,
-		copyright: config.Copyright,
-		date:      date,
+		targetProjectName: config.TargetProjectName,
+		copyright:         config.Copyright,
+		date:              date,
 	}
 }
 
@@ -36,7 +36,7 @@ func (header *HeaderConverter) Render(source string, sceneName string) string {
 
 	var replacedSource string = source
 	replacedSource = strings.ReplaceAll(replacedSource, "__SCENE_NAME__", sceneName)
-	replacedSource = strings.ReplaceAll(replacedSource, "__ORGANIZATION__", header.org)
+	replacedSource = strings.ReplaceAll(replacedSource, "__TARGET_PROJECT_NAME__", header.targetProjectName)
 	replacedSource = strings.ReplaceAll(replacedSource, "__DATE__", dateStr)
 	replacedSource = strings.ReplaceAll(replacedSource, "__YEAR__", strconv.Itoa(year))
 	replacedSource = strings.ReplaceAll(replacedSource, "__COPYRIGHT__", header.copyright)
