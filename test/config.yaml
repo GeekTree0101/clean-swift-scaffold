@@ -1,0 +1,6 @@
+target_project_name: Miro
+copyright: Geektree0101
+template_path: ../../templates
+source_path: ../../Playground/Sources
+test_path: ../../Playground/Tests
+indentation: 4
