@@ -67,6 +67,48 @@ func NewRunnerCommand(use string) *cobra.Command {
 	return genCmd
 }
 
+// Procedural runner command
+// name: the prefix of the scene/screen
+// usecases
+// config path
+func NewProceduralRunnerCommand(use string) *cobra.Command {
+
+	var name string
+	var usecasesString string
+	var configFilePath string
+
+	genCmd := &cobra.Command{
+		Use:   use,
+		Short: "generate source & unit tests files",
+		Run: func(cmd *cobra.Command, args []string) {
+
+			fmt.Println("Please enter the prefix of the scene/screen.")
+			fmt.Println("example: ArticleDetail or ChatList or UserList and so on")
+			fmt.Print("insert: ")
+			fmt.Scanln(&name)
+
+			fmt.Println("\nPlease enter usecases")
+			fmt.Println("example: Fetch,Delete,Update")
+			fmt.Print("insert: ")
+			fmt.Scanln(&usecasesString)
+
+			fmt.Println("\nPlease enter the config file")
+			fmt.Println("example: ./some_path/some_config.yaml")
+			fmt.Print("insert: ")
+			fmt.Scanln(&configFilePath)
+
+			run(
+				name,
+				usecasesString,
+				"", // unused
+				"", // unused
+				configFilePath,
+			)
+		},
+	}
+	return genCmd
+}
+
 func run(
 	name string,
 	usecasesString string,
