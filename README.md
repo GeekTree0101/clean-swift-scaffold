@@ -5,9 +5,15 @@
 [![Go](https://github.com/GeekTree0101/clean-swift-scaffold/actions/workflows/go.yml/badge.svg?branch=develop)](https://github.com/GeekTree0101/clean-swift-scaffold/actions/workflows/go.yml)
 
 
-### Basic Usage
+## Overview
 
+#### Run
 <img height=300pt src="https://github.com/GeekTree0101/clean-swift-scaffold/blob/develop/res/example.png" />
+
+#### Output
+<img height=300pt src="https://github.com/GeekTree0101/clean-swift-scaffold/blob/develop/res/output.png" />
+
+## Basic Usage
 
 #### make config.yaml
 ```yaml

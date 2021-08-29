@@ -1,8 +1,9 @@
 name: Go
 
 on:
+  pull_request:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 
 jobs:
 

@@ -27,7 +27,7 @@ final class __SCENE_NAME__PresenterTests: XCTestCase {
   override func setUp() {
     self.presenter = __SCENE_NAME__Presenter()
     self.display = __SCENE_NAME__DisplaySpy()
-    self.presenter.view = self.display
+    self.presenter.viewController = self.display
   }
 }
 
