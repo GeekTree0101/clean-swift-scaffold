@@ -40,7 +40,7 @@ func TestHeader(t *testing.T) {
 		// given
 		config := model.Config{
 			TargetProjectName: "Miro",
-			Copyright:         "Geektree0101",
+			Copyright:         "David Ha",
 			TemplatePath:      "",
 		}
 

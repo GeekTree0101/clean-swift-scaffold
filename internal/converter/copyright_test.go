@@ -13,7 +13,7 @@ type CopyrightStub struct {
 	GetErrorStub   error
 }
 
-func (c *CopyrightStub) Get() (string, error) {
+func (c CopyrightStub) Get() (string, error) {
 
 	return c.GetSuccessStub, c.GetErrorStub
 }

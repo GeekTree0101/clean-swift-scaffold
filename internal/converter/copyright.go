@@ -13,7 +13,7 @@ type Copyright interface {
 type CopyrightImpl struct {
 }
 
-func (c *CopyrightImpl) Get() (string, error) {
+func (c CopyrightImpl) Get() (string, error) {
 
 	gitUsername, err := c.getGitUsername()
 
@@ -30,7 +30,7 @@ func (c *CopyrightImpl) Get() (string, error) {
 	return "", err
 }
 
-func (c *CopyrightImpl) getGitUsername() (string, error) {
+func (c CopyrightImpl) getGitUsername() (string, error) {
 
 	gitCmd := exec.Command("git", "config", "--global", "user.name")
 	nameBytes, err := gitCmd.Output()
