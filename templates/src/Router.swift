@@ -2,7 +2,7 @@
 //  __SCENE_NAME__Router.swift
 //  __TARGET_PROJECT_NAME__
 //
-//  Created by clean-swift-scaffold on __DATE__.
+//  Created by __CREATOR__ on __DATE__.
 //  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.
 //
 

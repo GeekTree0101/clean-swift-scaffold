@@ -2,8 +2,8 @@
 //  ArticleDetailViewControllerTests.swift
 //  MiroTests
 //
-//  Created by clean-swift-scaffold on 12/10/2020.
-//  Copyright © 2020 Geektree0101. All rights reserved.
+//  Created by Geektree0101 on 12/10/2020.
+//  Copyright © 2020 miro. All rights reserved.
 //
 
 import XCTest
