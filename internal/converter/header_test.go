@@ -12,7 +12,7 @@ const dummySourceCode string = `//
 //  __SCENE_NAME__Model.swift
 //  __TARGET_PROJECT_NAME__
 //
-//  Created by clean-swift-scaffold on __DATE__.
+//  Created by __CREATOR__ on __DATE__.
 //  Copyright © __YEAR__ __COPYRIGHT__. All rights reserved.
 //
 
@@ -25,8 +25,8 @@ const expectedSourceCode string = `//
 //  ArticleDetailModel.swift
 //  Miro
 //
-//  Created by clean-swift-scaffold on 12/10/2020.
-//  Copyright © 2020 Geektree0101. All rights reserved.
+//  Created by Geektree0101 on 12/10/2020.
+//  Copyright © 2020 miro. All rights reserved.
 //
 
 enum ArticleDetailModel {
@@ -40,13 +40,13 @@ func TestHeader(t *testing.T) {
 		// given
 		config := model.Config{
 			TargetProjectName: "Miro",
-			Copyright:         "David Ha",
+			Copyright:         "miro",
 			TemplatePath:      "",
 		}
 
 		date := time.Date(2020, 10, 12, 0, 0, 0, 0, time.UTC)
 		sut := converter.NewHeaderConverter(
-			CopyrightStub{
+			CreatorStub{
 				GetSuccessStub: "Geektree0101",
 				GetErrorStub:   nil,
 			},

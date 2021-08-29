@@ -6,14 +6,14 @@ import (
 	"strings"
 )
 
-type Copyright interface {
+type Creator interface {
 	Get() (string, error)
 }
 
-type CopyrightImpl struct {
+type CreatorImpl struct {
 }
 
-func (c CopyrightImpl) Get() (string, error) {
+func (c CreatorImpl) Get() (string, error) {
 
 	gitUsername, err := c.getGitUsername()
 
@@ -30,7 +30,7 @@ func (c CopyrightImpl) Get() (string, error) {
 	return "", err
 }
 
-func (c CopyrightImpl) getGitUsername() (string, error) {
+func (c CreatorImpl) getGitUsername() (string, error) {
 
 	gitCmd := exec.Command("git", "config", "--global", "user.name")
 	nameBytes, err := gitCmd.Output()
