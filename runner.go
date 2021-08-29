@@ -41,30 +41,18 @@ func NewRunnerCommand(use string) *cobra.Command {
 		Short: "generate source & unit tests files",
 		Run: func(cmd *cobra.Command, args []string) {
 
-			fmt.Printf("\033[32m%s\033[0m\n", logo)
-
 			if len(name) == 0 {
 				fmt.Println("[Error] invalid usecase name\033[0m")
 				return
 			}
 
-			gen := gen.NewGenerator(
-				gen.Genflag{
-					Name:           name,
-					UsecasesString: usecasesString,
-					SourceDir:      sourceDir,
-					TestDir:        testDir,
-					ConfigFilePath: configFilePath,
-				},
+			run(
+				name,
+				usecasesString,
+				sourceDir,
+				testDir,
+				configFilePath,
 			)
-
-			err := gen.Run()
-
-			if err != nil {
-				fmt.Printf("\033[31m[Error] failed to generate: %s\n\033[0m", err.Error())
-			} else {
-				fmt.Printf("\033[32m[Log] Done!\n\n\033[0m")
-			}
 
 		},
 	}
@@ -77,4 +65,33 @@ func NewRunnerCommand(use string) *cobra.Command {
 	genCmd.Flags().StringVarP(&testDir, "test", "t", "", "Test dir, ex: -t ./Projects or --test ./Projects")
 
 	return genCmd
+}
+
+func run(
+	name string,
+	usecasesString string,
+	sourceDir string,
+	testDir string,
+	configFilePath string,
+) {
+
+	fmt.Printf("\033[32m%s\033[0m\n", logo)
+
+	gen := gen.NewGenerator(
+		gen.Genflag{
+			Name:           name,
+			UsecasesString: usecasesString,
+			SourceDir:      sourceDir,
+			TestDir:        testDir,
+			ConfigFilePath: configFilePath,
+		},
+	)
+
+	err := gen.Run()
+
+	if err != nil {
+		fmt.Printf("\033[31m[Error] failed to generate: %s\n\033[0m", err.Error())
+	} else {
+		fmt.Printf("\033[32m[Log] Done!\n\n\033[0m")
+	}
 }
