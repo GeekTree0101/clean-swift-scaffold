@@ -37,7 +37,7 @@ final class ArticleDetailPresenterTests: XCTestCase {
   override func setUp() {
     self.presenter = ArticleDetailPresenter()
     self.display = ArticleDetailDisplaySpy()
-    self.presenter.view = self.display
+    self.presenter.viewController = self.display
   }
 }
 

@@ -40,12 +40,19 @@ func TestHeader(t *testing.T) {
 		// given
 		config := model.Config{
 			TargetProjectName: "Miro",
-			Copyright:         "Geektree0101",
+			Copyright:         "David Ha",
 			TemplatePath:      "",
 		}
 
 		date := time.Date(2020, 10, 12, 0, 0, 0, 0, time.UTC)
-		sut := converter.NewHeaderConverter(&config, date)
+		sut := converter.NewHeaderConverter(
+			CopyrightStub{
+				GetSuccessStub: "Geektree0101",
+				GetErrorStub:   nil,
+			},
+			&config,
+			date,
+		)
 
 		usecaseName := "ArticleDetail"
 
