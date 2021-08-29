@@ -10,19 +10,19 @@ import (
 )
 
 type HeaderConverter struct {
-	copyright             Copyright
+	creator               Creator
 	targetProjectName     string
 	copyrightDefaultValue string
 	date                  time.Time
 }
 
 func NewHeaderConverter(
-	copyright Copyright,
+	creator Creator,
 	config *model.Config,
 	date time.Time) *HeaderConverter {
 
 	return &HeaderConverter{
-		copyright:             copyright,
+		creator:               creator,
 		targetProjectName:     config.TargetProjectName,
 		copyrightDefaultValue: config.Copyright,
 		date:                  date,
@@ -37,10 +37,10 @@ func (header *HeaderConverter) Render(source string, sceneName string) string {
 
 	dateStr := fmt.Sprintf("%d/%d/%d", day, month, year)
 
-	copyright, err := header.copyright.Get()
+	creator, err := header.creator.Get()
 
 	if err != nil {
-		copyright = header.copyrightDefaultValue
+		creator = "clean-swift-scaffold"
 	}
 
 	var replacedSource string = source
@@ -48,7 +48,8 @@ func (header *HeaderConverter) Render(source string, sceneName string) string {
 	replacedSource = strings.ReplaceAll(replacedSource, "__TARGET_PROJECT_NAME__", header.targetProjectName)
 	replacedSource = strings.ReplaceAll(replacedSource, "__DATE__", dateStr)
 	replacedSource = strings.ReplaceAll(replacedSource, "__YEAR__", strconv.Itoa(year))
-	replacedSource = strings.ReplaceAll(replacedSource, "__COPYRIGHT__", copyright)
+	replacedSource = strings.ReplaceAll(replacedSource, "__COPYRIGHT__", header.copyrightDefaultValue)
+	replacedSource = strings.ReplaceAll(replacedSource, "__CREATOR__", creator)
 
 	return replacedSource
 }

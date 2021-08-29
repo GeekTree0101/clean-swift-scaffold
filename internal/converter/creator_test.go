@@ -8,23 +8,23 @@ import (
 
 // MARK: - Test Double
 
-type CopyrightStub struct {
+type CreatorStub struct {
 	GetSuccessStub string
 	GetErrorStub   error
 }
 
-func (c CopyrightStub) Get() (string, error) {
+func (c CreatorStub) Get() (string, error) {
 
 	return c.GetSuccessStub, c.GetErrorStub
 }
 
 // MARK: - Test Case
 
-func TestCopyright(t *testing.T) {
+func TestCreator(t *testing.T) {
 
-	t.Run("get copyright", func(t *testing.T) {
+	t.Run("get Creator", func(t *testing.T) {
 		// given
-		sut := converter.CopyrightImpl{}
+		sut := converter.CreatorImpl{}
 
 		// when
 		out, err := sut.Get()
