@@ -15,7 +15,7 @@ func createSource() *converter.SourceConverter {
 
 	config := &model.Config{
 		TargetProjectName: "Miro",
-		Copyright:         "Geektree0101",
+		Copyright:         "David Ha",
 		TemplatePath:      "../../templates",
 		SourceDir:         "./Playground/Sources",
 		TestDir:           "./Playground/Tests",
@@ -23,6 +23,10 @@ func createSource() *converter.SourceConverter {
 	}
 
 	header := converter.NewHeaderConverter(
+		CopyrightStub{
+			GetSuccessStub: "Geektree0101",
+			GetErrorStub:   nil,
+		},
 		config,
 		date,
 	)

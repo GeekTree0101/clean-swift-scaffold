@@ -48,6 +48,7 @@ func (gen *Generator) Run() error {
 		gen.flag.Name,
 		strings.Split(gen.flag.UsecasesString, ","),
 		converter.NewHeaderConverter(
+			converter.CopyrightImpl{},
 			config,
 			today,
 		),
